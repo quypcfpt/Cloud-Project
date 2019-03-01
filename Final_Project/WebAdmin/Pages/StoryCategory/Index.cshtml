@@ -1,0 +1,344 @@
+﻿@page
+@model WebAdmin.Pages.StoryCategory.IndexModel
+@{
+    ViewData["Title"] = "Thể loại truyện";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* -----Header----- *@
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor">Quản lý thể loại</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Quản lý thể loại</li>
+        </ol>
+    </div>
+</div>
+@* ----End Header---- *@
+@* ----Story Categories DataTable----- *@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive m-t-40">
+                    <table id="StoryCategoriesDatatable" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Thể loại</th>
+                                <th>SeoName</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* ----End Story Categories Datatable---- *@
+@* ----Add New Category-------- *@
+<div class="modal fade" id="AddStoryCatesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title w-100 font-weight-bold">Thêm mới thể loại truyện</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <form class="form p-t-20" method="post" id="AddStoryCatesForm">
+                    <div class="form-group">
+                        <label for="name">Tên thể loại</label>
+                        <div class="input-group">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Tên thể loại">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">SeoName</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="seoname" id="seoname" placeholder="vd: huyen-huyen">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" id="btnAddNew" class="btn btn-success waves-effect waves-light m-r-10">Thêm</button>
+                <button type="button" class="btn btn-black waves-effect waves-light m-r-10" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">Hủy</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ----End Add new Category ----- *@
+
+@* ----Start Edit Event ----- *@
+
+<div class="modal fade" id="EditCategoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Edit Event</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <form class="form p-t-20" method="post" id="EditCategoryForm">
+                    <div class="form-group">
+                        <label for="editname">Tên thể loại</label>
+                        <div class="input-group">
+                            <input type="text" name="name" class="form-control" id="editname" placeholder="vd: Huyền huyễn, kiếm hiệp,...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editSeoname">Seoname</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="editSeoname" id="editSeoname" placeholder="vd: huyen-huyen, kiem-hiep">
+                        </div>
+                    </div>
+                    <input type="hidden" id="cateId">
+                </form>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" id="btnEdit" class="btn btn-success waves-effect waves-light m-r-10">Cập nhật</button>
+                <button type="button" class="btn btn-black waves-effect waves-light m-r-10" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">Hủy</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ----End Edit Event ------- *@
+
+@section Scripts {
+    <script src="~/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/plugins/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="~/assets/plugins/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="~/assets/plugins/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            InitDatatable();
+        });
+        var InitDatatable = function () {
+            $('#StoryCategoriesDatatable').dataTable({
+                "ajax": {
+                    "url": `${configuration.BASE_API_URL}StoryCategory/getAll`,
+                    "method": "GET",
+                },
+                "buttons": [
+                    {
+                        text: '<i class="left-icon fa fa-plus"></i>&nbsp;Thêm mới',
+                        className: 'dt-button-success',
+                        action: function (e, dt, node, config) {
+                            ShowAddNewEventForm();
+                        }
+                    },
+                ],
+                dom: 'Bftip',
+                "columns": [
+                    { data: 'name' },
+                    { data: 'seoName' },
+                    {
+                        data: 'id', render: function (data) {
+                            return '<button type="button" class="btn btn-success" onclick="getEventDetails(' + data + ')"><i class="fa fa-pencil"></i></button>'
+                                + '<button type="button" class="btn btn-danger m-l-10" onclick="DeleteEvent(' + data + ')"><i class="fa fa-trash"></i></button>';
+                        }
+                    }
+                ],
+                'bAutoWidth': false,
+            });
+        };
+
+        function DeleteEvent(id) {
+            swal({
+                title: "Xác thực",
+                text: "Bạn có muốn xóa thể loại truyện này không?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Xóa",
+                cancelButtonText: "Thoát",
+            }, function () {
+                $.ajax({
+                    type: 'DELETE',
+                    url: `${configuration.BASE_API_URL}StoryCategory/delete?id=${id}`,
+                    headers: {
+                        "Authorization": `${configuration.ACCESSTOKEN}`,
+                    },
+                    success: function (result) {
+                        if (result.success) {
+                            $.toast({
+                                heading: result.data.title,
+                                text: result.data.msg,
+                                position: 'top-right',
+                                loaderBg: '#ffff',
+                                icon: 'success',
+                                hideAfter: 3500,
+                                stack: 6
+                            });
+                            $('#StoryCategoriesDatatable').DataTable().ajax.reload();
+                        } else {
+                            $.toast({
+                                heading: result.data.title,
+                                text: result.data.msg,
+                                position: 'top-right',
+                                loaderBg: '#ffff',
+                                icon: 'error',
+                                hideAfter: 3500
+                            });
+                        }
+                    },
+                    Error: function (result) {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'error',
+                            hideAfter: 3500
+                        });
+                    }
+                });
+            });
+        }
+
+        //Add New Event Module
+        function ShowAddNewEventForm() {
+            $("#AddStoryCatesModal").modal().show();
+        }
+
+        var addNewEvent = function () {
+            var formData = new FormData();
+            formData.append("name", $("#name").val());
+            formData.append("seoname", $("#seoname").val());
+            $.ajax({
+                url: `${configuration.BASE_API_URL}StoryCategory/create`,
+                headers: {
+                    "Authorization": `${configuration.ACCESSTOKEN}`,
+                },
+                method: "post",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    if (result.success) {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'success',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                        $('#StoryCategoriesDatatable').DataTable().ajax.reload();
+                        $('#AddStoryCatesModal').modal('hide');
+                    }
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
+            });
+        };
+
+        $("#btnAddNew").on("click", function () {
+            addNewEvent();
+        });
+
+
+        //Edit Event Module
+        //Click Edit button in datatable row
+        var getEventDetails = function (id) {
+            $.ajax({
+                url: `${configuration.BASE_API_URL}StoryCategory/getDetail/${id}`,
+                method: "GET",
+                success: function (result) {
+                    $('#editname').val(result.data.name);
+                    $('#editSeoname').val(result.data.seoName);
+                    $('#cateId').val(result.data.id);
+                    $("#EditCategoryModal").modal('show');
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
+            });
+        };
+        //Click Edit Submit Edit Form
+        var editEventDetails = function () {
+            var formData = new FormData();
+            formData.append("name", $("#editname").val());
+            formData.append("seoname", $("#editSeoname").val());
+            formData.append("id", $("#cateId").val());
+            $.ajax({
+                url: `${configuration.BASE_API_URL}StoryCategory/edit`,
+                headers: {
+                    "Authorization": `${configuration.ACCESSTOKEN}`,
+                },
+                method: "PUT",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    if (result.success) {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'success',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                    } else {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'error',
+                            hideAfter: 3500
+                        });
+                    }
+                    $('#StoryCategoriesDatatable').DataTable().ajax.reload();
+                    $("#EditCategoryModal").modal('hide');
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
+            });
+        }
+        //click button to edit organization details
+        $("#btnEdit").click(function () {
+            editEventDetails();
+        });
+    </script>
+}

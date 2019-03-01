@@ -1,0 +1,23 @@
+﻿[
+  {
+    "Icon": "<i class=\"mdi mdi-gauge\"></i>",
+    "Title": "Trang chủ",
+    "Url": ""
+  },
+  {
+    "Icon": "<i class=\"mdi mdi-gauge\"></i>",
+    "Title": "Quản lý tài khoản",
+    "Url": "/Account"
+  },
+  {
+    "Icon": "<i class=\"mdi mdi-gauge\"></i>",
+    "Title": "Thể loại truyện",
+    "Url": "/StoryCategory"
+  },
+  {
+    "Icon": "<i class=\"mdi mdi-gauge\"></i>",
+    "Title": "Quản lý truyện",
+    "Url": "/Story"
+  }
+]
+ 
