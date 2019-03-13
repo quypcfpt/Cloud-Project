@@ -1,0 +1,229 @@
+﻿@page
+@model WebAdmin.Pages.Story.ChapterModel
+@{
+    ViewData["Title"] = "Chapter";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* -----Header----- *@
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor">Quản lý truyện</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="/story">Quản lý truyện</a></li>
+            <li class="breadcrumb-item active">Danh sách chương</li>
+        </ol>
+    </div>
+</div>
+@* ----End Header---- *@
+@* ----Story Categories DataTable----- *@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-3">
+                        <img src="https://truyencv.com/images/poster/dau-pha-thuong-khung-poster-20150926-220x330.jpg" width="200" height="300" />
+                    </div>
+                    <div class="col-8">
+                        <h4 class="card-title">ĐẤU PHÁ THƯƠNG KHUNG</h4>
+                        <div class="col-md-6">
+                            <label class="card-subtitle">Tác giả:</label>
+                            <span> Thiên Tằm thổ đậu</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="card-subtitle">Người đăng:</label>
+                            <span> tin@gmail.com</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="card-subtitle">Thể loại:</label>
+                            <span> Huyền huyễn</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="card-subtitle">Trạng thái:</label>
+                            <span> Đang đăng</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="card-subtitle">Lượt xem:</label>
+                            <span> 50</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="table-responsive m-t-40">
+                    <h3 class="card-title card-info text-white">DANH SÁCH CHƯƠNG</h3>
+                    <table id="StoryCategoriesDatatable" class="table table-striped table-bordered table-hover">
+                        <thead class="table-success">
+                            <tr>
+                                <th>Chương</th>
+                                <th>Tiêu đề</th>
+                                <th>Ngày đăng</th>
+                                <th>Trạng thái</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* ----End Story Categories Datatable---- *@
+@section Scripts {
+    <script src="~/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/plugins/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="~/assets/plugins/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="~/assets/plugins/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            InitDatatable();
+        });
+        var InitDatatable = function () {
+            $('#StoryCategoriesDatatable').dataTable({
+                "ajax": {
+                    "url": `${configuration.BASE_API_URL}Chapter/getChapterListbyStoryId`,
+                    "method": "GET",
+                },
+                dom: 'ftip',
+                "columns": [
+                    { data: 'position' },
+                    { data: 'name' },
+                    { data: 'createTime' },
+                    { data: 'totalVisit' },
+                    {
+                        data: 'IsApproved',
+                        render: function (data, type, row) {
+                            if (data == true) {
+                                return '<button class="btn btn-success" onclick="OpenChangeStatusPopup(' + row['id'] + ')">Đã duyệt</span>'
+                            } else {
+                                return '<button class="btn btn-danger" onclick="OpenChangeStatusPopup(' + row['id'] + ')">Chờ duyệt</span>'
+                            }
+                        }
+                    },
+                    {
+                        width: '40%',
+                        data: 'id', render: function (data) {
+                            return '<a class="btn btn-info text-white" title="view detail" href="story/chapter?storyId=' + data + '"><i class="fa fa-eye"></i></a>'
+                                //+ '<button type="button" class="btn btn-success m-l-10" title="Update" onclick="getEventDetails(' + data + ')"><i class="fa fa-pencil"></i></button>'
+                                + '<button type="button" class="btn btn-danger" title="remove" onclick="DeleteEvent(' + data + ')"><i class="fa fa-trash"></i></button>';
+                        }
+                    }
+                ],
+                autoWidth: false,
+            });
+        };
+
+        function DeleteEvent(id) {
+            swal({
+                title: "Xác thực",
+                text: "Bạn có muốn xóa thể loại truyện này không?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Xóa",
+                cancelButtonText: "Thoát",
+            }, function () {
+                $.ajax({
+                    type: 'DELETE',
+                    url: `${configuration.BASE_API_URL}StoryCategory/delete?id=${id}`,
+                    headers: {
+                        "Authorization": `${configuration.ACCESSTOKEN}`,
+                    },
+                    success: function (result) {
+                        if (result.success) {
+                            $.toast({
+                                heading: result.data.title,
+                                text: result.data.msg,
+                                position: 'top-right',
+                                loaderBg: '#ffff',
+                                icon: 'success',
+                                hideAfter: 3500,
+                                stack: 6
+                            });
+                            $('#StoryCategoriesDatatable').DataTable().ajax.reload();
+                        } else {
+                            $.toast({
+                                heading: result.data.title,
+                                text: result.data.msg,
+                                position: 'top-right',
+                                loaderBg: '#ffff',
+                                icon: 'error',
+                                hideAfter: 3500
+                            });
+                        }
+                    },
+                    Error: function (result) {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'error',
+                            hideAfter: 3500
+                        });
+                    }
+                });
+            });
+        }
+
+        //Add New Event Module
+        function ShowAddNewEventForm() {
+            $("#AddStoryCatesModal").modal().show();
+        }
+
+        //Change Status Event
+        function OpenChangeStatusPopup(eventId) {
+            $("#UpdateStatusEventModal").modal("show");
+            $("#eventIdStatus").val(eventId);
+        }
+        function ChangeStatus(statusNum) {
+            var eventId = $("#eventIdStatus").val();
+            $.ajax({
+                url: `${configuration.BASE_API_URL}Story/updateStatus?eventId=${eventId}&statusNum=${statusNum}`,
+                headers: {
+                    "Authorization": `${configuration.ACCESSTOKEN}`,
+                },
+                method: "PUT",
+                contentType: false,
+                success: function (result) {
+                    if (result.success) {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'success',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                    } else {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'error',
+                            hideAfter: 3500
+                        });
+                    }
+                    $('#StoryCategoriesDatatable').DataTable().ajax.reload();
+                    $("#UpdateStatusEventModal").modal('hide');
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
+            });
+        }
+    </script>
+}

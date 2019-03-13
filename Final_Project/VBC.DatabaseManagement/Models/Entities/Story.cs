@@ -23,6 +23,7 @@ namespace VBC.DatabaseManagement.Models.Entities
         public string PosterId { get; set; }
         public int? TotalVisit { get; set; }
         public string SeoName { get; set; }
+        public string ImageUrl { get; set; }
 
         public virtual Author Author { get; set; }
         public virtual StoryCategory Category { get; set; }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VBC.DatabaseManagement.Services;
 using VBC.DatabaseManagement.ViewModels;
@@ -96,6 +97,64 @@ namespace VBC.WebApi.Controllers
                     {
                         title = "Error",
                         Msg = "Fail to create!"
+                    },
+                    Success = false
+                });
+            }
+        }
+
+        [HttpPut("updateStatus")]
+        [Authorize]
+        public async Task<ActionResult> UpdateStatus([FromQuery] int eventId, [FromQuery] bool statusNum)
+        {
+            try
+            {
+                var viewModel = storyService.Get(q => q.Id == eventId).FirstOrDefault();
+
+                viewModel.Approved = statusNum;
+                await storyService.UpdateAsync(viewModel);
+                return Ok(new
+                {
+                    data = new
+                    {
+                        title = "Thành công!",
+                        Msg = "Cập nhật trạng thái thành công Event."
+                    },
+                    Success = true
+                });
+            }
+            catch
+            {
+                return BadRequest(new
+                {
+                    data = new
+                    {
+                        title = "Có lỗi!",
+                        Msg = "Có lỗi xảy ra!"
+                    },
+                    Success = false
+
+                });
+            }
+
+        }
+
+        [HttpGet("getDetail/{id}")]
+        public async Task<ActionResult> GetDetails(int id)
+        {
+            try
+            {
+                var result = storyService.Get(q => q.Id == id).FirstOrDefault();
+                return Ok(new { data = result });
+            }
+            catch
+            {
+                return BadRequest(new
+                {
+                    data = new
+                    {
+                        title = "Error",
+                        Msg = "Fail to get details!"
                     },
                     Success = false
                 });

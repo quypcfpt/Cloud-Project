@@ -3762,11 +3762,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\PRC391\\Final_Project\\VBC.Service\\VBC.Service.csproj",
+      "projectUniqueName": "G:\\PRC391\\Project_Assignment\\Final_Project\\VBC.Service\\VBC.Service.csproj",
       "projectName": "VBC.Service",
-      "projectPath": "G:\\PRC391\\Final_Project\\VBC.Service\\VBC.Service.csproj",
+      "projectPath": "G:\\PRC391\\Project_Assignment\\Final_Project\\VBC.Service\\VBC.Service.csproj",
       "packagesPath": "C:\\Users\\trant\\.nuget\\packages\\",
-      "outputPath": "G:\\PRC391\\Final_Project\\VBC.Service\\obj\\",
+      "outputPath": "G:\\PRC391\\Project_Assignment\\Final_Project\\VBC.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

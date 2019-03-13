@@ -65,6 +65,7 @@ namespace VBC.DatabaseManagement
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             services.AddScoped(typeof(IStoryCategoryService), typeof(StoryCategoryService));
             services.AddScoped(typeof(IStoryService), typeof(StoryService));
+            services.AddScoped(typeof(IChapterService), typeof(ChapterService));
             #endregion
 
             // cau hinh AutoMapper
@@ -89,6 +90,7 @@ namespace VBC.DatabaseManagement
 
                 automapper.CreateMap<Author, AuthorViewModel>();
                 automapper.CreateMap<AuthorViewModel, Author>();
+
             });
 
             var mapper = mapperConfig.CreateMapper();

@@ -12953,11 +12953,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\PRC391\\Final_Project\\WebAdmin\\WebAdmin.csproj",
+      "projectUniqueName": "G:\\PRC391\\Project_Assignment\\Final_Project\\WebAdmin\\WebAdmin.csproj",
       "projectName": "WebAdmin",
-      "projectPath": "G:\\PRC391\\Final_Project\\WebAdmin\\WebAdmin.csproj",
+      "projectPath": "G:\\PRC391\\Project_Assignment\\Final_Project\\WebAdmin\\WebAdmin.csproj",
       "packagesPath": "C:\\Users\\trant\\.nuget\\packages\\",
-      "outputPath": "G:\\PRC391\\Final_Project\\WebAdmin\\obj\\",
+      "outputPath": "G:\\PRC391\\Project_Assignment\\Final_Project\\WebAdmin\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

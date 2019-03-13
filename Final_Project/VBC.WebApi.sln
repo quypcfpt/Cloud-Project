@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VBC.DatabaseManagement", "V
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VBC.Service", "VBC.Service\VBC.Service.csproj", "{977AE393-551F-40F2-A793-14B5C7A9303C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAdmin", "WebAdmin\WebAdmin.csproj", "{358F3E0E-B4C0-4260-9054-E33ED4745CFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAdmin", "WebAdmin\WebAdmin.csproj", "{358F3E0E-B4C0-4260-9054-E33ED4745CFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient", "WebClient\WebClient.csproj", "{ACAF938B-6B48-4749-9AF8-9AABEFFA5291}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{358F3E0E-B4C0-4260-9054-E33ED4745CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{358F3E0E-B4C0-4260-9054-E33ED4745CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{358F3E0E-B4C0-4260-9054-E33ED4745CFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACAF938B-6B48-4749-9AF8-9AABEFFA5291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACAF938B-6B48-4749-9AF8-9AABEFFA5291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACAF938B-6B48-4749-9AF8-9AABEFFA5291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACAF938B-6B48-4749-9AF8-9AABEFFA5291}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

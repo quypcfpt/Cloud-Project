@@ -9614,11 +9614,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\PRC391\\Final_Project\\VBC.DatabaseManagement\\VBC.DatabaseManagement.csproj",
+      "projectUniqueName": "G:\\PRC391\\Project_Assignment\\Final_Project\\VBC.DatabaseManagement\\VBC.DatabaseManagement.csproj",
       "projectName": "VBC.DatabaseManagement",
-      "projectPath": "G:\\PRC391\\Final_Project\\VBC.DatabaseManagement\\VBC.DatabaseManagement.csproj",
+      "projectPath": "G:\\PRC391\\Project_Assignment\\Final_Project\\VBC.DatabaseManagement\\VBC.DatabaseManagement.csproj",
       "packagesPath": "C:\\Users\\trant\\.nuget\\packages\\",
-      "outputPath": "G:\\PRC391\\Final_Project\\VBC.DatabaseManagement\\obj\\",
+      "outputPath": "G:\\PRC391\\Project_Assignment\\Final_Project\\VBC.DatabaseManagement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9637,8 +9637,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "G:\\PRC391\\Final_Project\\VBC.Service\\VBC.Service.csproj": {
-              "projectPath": "G:\\PRC391\\Final_Project\\VBC.Service\\VBC.Service.csproj"
+            "G:\\PRC391\\Project_Assignment\\Final_Project\\VBC.Service\\VBC.Service.csproj": {
+              "projectPath": "G:\\PRC391\\Project_Assignment\\Final_Project\\VBC.Service\\VBC.Service.csproj"
             }
           }
         }
