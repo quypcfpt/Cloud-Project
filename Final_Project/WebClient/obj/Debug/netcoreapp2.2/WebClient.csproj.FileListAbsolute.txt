@@ -28,3 +28,4 @@ G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\Web
 G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient.dll
 G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient.pdb
 G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient.csproj.CopyComplete
+G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\Razor\Pages\category.g.cshtml.cs

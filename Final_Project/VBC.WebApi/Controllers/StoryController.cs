@@ -42,6 +42,29 @@ namespace VBC.WebApi.Controllers
 
         }
 
+        [HttpGet("getStoriesByCategory")]
+        public async Task<ActionResult> GetStoriesByCategory([FromQuery] string cateSeoName)
+        {
+            try
+            {
+                var result = storyService.Get(q => q.Active == true && q.Category.SeoName.Equals(cateSeoName)).ToList();
+                return Ok(new { data = result });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new
+                {
+                    data = new
+                    {
+                        title = "Error",
+                        Msg = "Fail to load organization list!"
+                    },
+                    Success = false
+                });
+            }
+
+        }
+
         [HttpPut("edit")]
         public async Task<ActionResult> Edit([FromForm] StoryViewModel model)
         {

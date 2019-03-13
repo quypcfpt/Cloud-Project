@@ -209,7 +209,7 @@
                 method: "GET",
                 success: function (result) {
                     $.each(result.data, function (key, value) {
-                        $("#categories").append(' <a class="dropdown-item" href="/categorys/' + value.seoName + '">' + value.name + '</a>')
+                        $("#categories").append(' <a class="dropdown-item" href="/category?seoName=' + value.seoName + '">' + value.name + '</a>')
                     });
                 },
                 error: function (result) {
