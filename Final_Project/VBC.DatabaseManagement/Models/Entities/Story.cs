@@ -17,7 +17,7 @@ namespace VBC.DatabaseManagement.Models.Entities
         public string Description { get; set; }
         public int? Status { get; set; }
         public int? AuthorId { get; set; }
-        public bool? Approved { get; set; }
+        public int? Approved { get; set; }
         public int? CategoryId { get; set; }
         public bool? Active { get; set; }
         public string PosterId { get; set; }

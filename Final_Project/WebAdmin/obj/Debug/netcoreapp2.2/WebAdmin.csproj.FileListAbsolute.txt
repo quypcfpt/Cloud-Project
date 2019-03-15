@@ -40,7 +40,6 @@ G:\PRC391\Project_Assignment\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebA
 G:\PRC391\Project_Assignment\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.pdb
 G:\PRC391\Project_Assignment\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.Views.dll
 G:\PRC391\Project_Assignment\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.Views.pdb
-G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.csprojAssemblyReference.cache
 G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.csproj.CoreCompileInputs.cache
 G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorAssemblyInfo.cache
 G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorAssemblyInfo.cs
@@ -68,3 +67,11 @@ G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebA
 G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.dll
 G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.pdb
 G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.csproj.CopyComplete
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_LayoutPoster.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\IndexPoster.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\ChangePassword.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Profile.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\RetrivePassword.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\storyPoster.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.csprojAssemblyReference.cache
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\ChapterPoster.g.cshtml.cs

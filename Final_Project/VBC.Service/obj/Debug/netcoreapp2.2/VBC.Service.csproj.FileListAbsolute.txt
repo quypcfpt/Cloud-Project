@@ -36,9 +36,9 @@ G:\PRC391\Project_Assignment\Final_Project\VBC.Service\bin\Debug\netcoreapp2.2\V
 G:\PRC391\Project_Assignment\Final_Project\VBC.Service\bin\Debug\netcoreapp2.2\VBC.Service.runtimeconfig.dev.json
 G:\PRC391\Project_Assignment\Final_Project\VBC.Service\bin\Debug\netcoreapp2.2\VBC.Service.dll
 G:\PRC391\Project_Assignment\Final_Project\VBC.Service\bin\Debug\netcoreapp2.2\VBC.Service.pdb
-G:\PRC391\Project_Assignment\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.csprojAssemblyReference.cache
 G:\PRC391\Project_Assignment\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.csproj.CoreCompileInputs.cache
 G:\PRC391\Project_Assignment\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.AssemblyInfoInputs.cache
 G:\PRC391\Project_Assignment\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.AssemblyInfo.cs
 G:\PRC391\Project_Assignment\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.dll
 G:\PRC391\Project_Assignment\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.pdb
+G:\PRC391\Project_Assignment\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.csprojAssemblyReference.cache

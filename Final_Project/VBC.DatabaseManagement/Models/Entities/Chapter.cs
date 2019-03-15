@@ -10,7 +10,7 @@ namespace VBC.DatabaseManagement.Models.Entities
         public string Detail { get; set; }
         public DateTime? CreateTime { get; set; }
         public int? TotalVisit { get; set; }
-        public bool? IsApproved { get; set; }
+        public int? IsApproved { get; set; }
         public bool? Active { get; set; }
         public int? Position { get; set; }
         public int? StoryId { get; set; }

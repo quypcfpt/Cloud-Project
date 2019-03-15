@@ -66,6 +66,8 @@ namespace VBC.DatabaseManagement
             services.AddScoped(typeof(IStoryCategoryService), typeof(StoryCategoryService));
             services.AddScoped(typeof(IStoryService), typeof(StoryService));
             services.AddScoped(typeof(IChapterService), typeof(ChapterService));
+            services.AddScoped(typeof(IAspNetUserService), typeof(AspNetUserService));
+            services.AddScoped(typeof(IAuthorService), typeof(AuthorService));
             #endregion
 
             // cau hinh AutoMapper
@@ -82,7 +84,7 @@ namespace VBC.DatabaseManagement
                 .ForMember(q => q.AuthorName, p => p.MapFrom(src => src.Author.Name))
                 .ForMember(q => q.CategoryName, p => p.MapFrom(src => src.Category.Name))
                 .ForMember(q => q.PosterName, p => p.MapFrom(src => src.Poster.UserName))
-                .ForMember(q => q.TotalChapters, p => p.MapFrom(src => !src.Chapter.Any()? src.Chapter.Count():0));
+                .ForMember(q => q.TotalChapters, p => p.MapFrom(src => src.Chapter.Any()? src.Chapter.Count():0));
                 automapper.CreateMap<StoryViewModel, Story>();
 
                 automapper.CreateMap<Chapter, ChapterViewModel>();
@@ -91,6 +93,14 @@ namespace VBC.DatabaseManagement
                 automapper.CreateMap<Author, AuthorViewModel>();
                 automapper.CreateMap<AuthorViewModel, Author>();
 
+                automapper.CreateMap<AspNetUsers, AccountViewModel>();
+                automapper.CreateMap<AccountViewModel, AspNetUsers>();
+
+                automapper.CreateMap<ApplicationUser, AccountEditViewModel>();
+                automapper.CreateMap<AccountEditViewModel, ApplicationUser>();
+
+                automapper.CreateMap<Author, AuthorViewModel>();
+                automapper.CreateMap<AuthorViewModel, Author>();
             });
 
             var mapper = mapperConfig.CreateMapper();

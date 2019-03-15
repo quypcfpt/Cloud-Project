@@ -5,7 +5,6 @@ G:\PRC391\Project_Assignment\Final_Project\WebClient\bin\Debug\netcoreapp2.2\Web
 G:\PRC391\Project_Assignment\Final_Project\WebClient\bin\Debug\netcoreapp2.2\WebClient.pdb
 G:\PRC391\Project_Assignment\Final_Project\WebClient\bin\Debug\netcoreapp2.2\WebClient.Views.dll
 G:\PRC391\Project_Assignment\Final_Project\WebClient\bin\Debug\netcoreapp2.2\WebClient.Views.pdb
-G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient.csprojAssemblyReference.cache
 G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient.csproj.CoreCompileInputs.cache
 G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient.RazorAssemblyInfo.cache
 G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient.RazorAssemblyInfo.cs

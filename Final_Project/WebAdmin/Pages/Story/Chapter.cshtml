@@ -25,29 +25,33 @@
 
                 <div class="row">
                     <div class="col-3">
-                        <img src="https://truyencv.com/images/poster/dau-pha-thuong-khung-poster-20150926-220x330.jpg" width="200" height="300" />
+                        <div id="review_container"></div>
                     </div>
                     <div class="col-8">
-                        <h4 class="card-title">ĐẤU PHÁ THƯƠNG KHUNG</h4>
+                        <h4 class="card-title" id="name">ĐẤU PHÁ THƯƠNG KHUNG</h4>
                         <div class="col-md-6">
                             <label class="card-subtitle">Tác giả:</label>
-                            <span> Thiên Tằm thổ đậu</span>
+                            <span id="author"> Thiên Tằm thổ đậu</span>
                         </div>
                         <div class="col-md-6">
                             <label class="card-subtitle">Người đăng:</label>
-                            <span> tin@gmail.com</span>
+                            <span id="poster"> tin@gmail.com</span>
                         </div>
                         <div class="col-md-6">
                             <label class="card-subtitle">Thể loại:</label>
-                            <span> Huyền huyễn</span>
+                            <span id="category"> Huyền huyễn</span>
                         </div>
                         <div class="col-md-6">
                             <label class="card-subtitle">Trạng thái:</label>
-                            <span> Đang đăng</span>
+                            <span id="status"></span>
                         </div>
                         <div class="col-md-6">
                             <label class="card-subtitle">Lượt xem:</label>
-                            <span> 50</span>
+                            <span id="totalVisit"> 50</span>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="card-subtitle">Giới thiệu:</label>
+                            <div id="description"></div>
                         </div>
                     </div>
 
@@ -61,6 +65,7 @@
                                 <th>Chương</th>
                                 <th>Tiêu đề</th>
                                 <th>Ngày đăng</th>
+                                <th>Lượt xem</th>
                                 <th>Trạng thái</th>
                                 <th></th>
                             </tr>
@@ -73,6 +78,59 @@
     </div>
 </div>
 @* ----End Story Categories Datatable---- *@
+
+@* ----Start Update Status Chapter ----- *@
+
+<div class="modal fade" id="UpdateStatusEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Xét duyệt Chương</h4>
+                <input type="hidden" id="eventIdStatus" />
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3 d-flex justify-content-center">
+                <button type="button" class="btn btn-success waves-effect waves-light m-r-10" onclick="ChangeStatus(1)">Duyệt</button>
+                <button type="button" class="btn btn-danger waves-effect waves-light m-r-10" onclick="ChangeStatus(2)">Từ chối</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ----End Update Status Chapter ------- *@
+
+@* ----Start Edit Event ----- *@
+
+<div class="modal fade" id="EditEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Nội dung Chương <span id="position"></span>: <span id="chaptername"></span></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="col-md-12" id="detail">
+
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-black waves-effect waves-light m-r-10" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">Đóng</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ----End Edit Event ------- *@
+
+
 @section Scripts {
     <script src="~/assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="~/assets/plugins/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
@@ -80,36 +138,45 @@
     <script src="~/assets/plugins/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
     <script>
         $(document).ready(function () {
+            getStoryDetails(@Model.StoryId);
             InitDatatable();
         });
         var InitDatatable = function () {
             $('#StoryCategoriesDatatable').dataTable({
                 "ajax": {
-                    "url": `${configuration.BASE_API_URL}Chapter/getChapterListbyStoryId`,
+                    "url": `${configuration.BASE_API_URL}Chapter/getChapterListbyStoryId/@Model.StoryId`,
                     "method": "GET",
                 },
                 dom: 'ftip',
                 "columns": [
                     { data: 'position' },
                     { data: 'name' },
-                    { data: 'createTime' },
+                    {
+                        data: 'createTime', render: function (data) {
+                            return formatDate(data);
+                        }
+                    },
+
                     { data: 'totalVisit' },
                     {
-                        data: 'IsApproved',
+                        data: 'isApproved',
                         render: function (data, type, row) {
-                            if (data == true) {
-                                return '<button class="btn btn-success" onclick="OpenChangeStatusPopup(' + row['id'] + ')">Đã duyệt</span>'
+                            if (data == 0) {
+                                return '<button class="btn btn-success" onclick="OpenChangeStatusPopup(' + row['id'] + ')">Chờ duyệt</button>'
+                            } else if (data == 1) {
+                                return '<button class="btn btn-info"  onclick="OpenChangeStatusPopup(' + row['id'] + ')">Duyệt</button>'
+                            }
+                            else if (data == 2) {
+                                return '<button class="btn btn-danger"  onclick="OpenChangeStatusPopup(' + row['id'] + ')">Từ chối</button>'
                             } else {
-                                return '<button class="btn btn-danger" onclick="OpenChangeStatusPopup(' + row['id'] + ')">Chờ duyệt</span>'
+                                return '<span class="label label-warning">Không xác dịnh</span>'
                             }
                         }
                     },
                     {
-                        width: '40%',
+                        width: '10%',
                         data: 'id', render: function (data) {
-                            return '<a class="btn btn-info text-white" title="view detail" href="story/chapter?storyId=' + data + '"><i class="fa fa-eye"></i></a>'
-                                //+ '<button type="button" class="btn btn-success m-l-10" title="Update" onclick="getEventDetails(' + data + ')"><i class="fa fa-pencil"></i></button>'
-                                + '<button type="button" class="btn btn-danger" title="remove" onclick="DeleteEvent(' + data + ')"><i class="fa fa-trash"></i></button>';
+                            return '<button type="button" class="btn btn-info m-l-10" title="Update" onclick="getEventDetails(' + data + ')"><i class="fa fa-eye"></i></button>';
                         }
                     }
                 ],
@@ -117,63 +184,48 @@
             });
         };
 
-        function DeleteEvent(id) {
-            swal({
-                title: "Xác thực",
-                text: "Bạn có muốn xóa thể loại truyện này không?",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Xóa",
-                cancelButtonText: "Thoát",
-            }, function () {
-                $.ajax({
-                    type: 'DELETE',
-                    url: `${configuration.BASE_API_URL}StoryCategory/delete?id=${id}`,
-                    headers: {
-                        "Authorization": `${configuration.ACCESSTOKEN}`,
-                    },
-                    success: function (result) {
-                        if (result.success) {
-                            $.toast({
-                                heading: result.data.title,
-                                text: result.data.msg,
-                                position: 'top-right',
-                                loaderBg: '#ffff',
-                                icon: 'success',
-                                hideAfter: 3500,
-                                stack: 6
-                            });
-                            $('#StoryCategoriesDatatable').DataTable().ajax.reload();
-                        } else {
-                            $.toast({
-                                heading: result.data.title,
-                                text: result.data.msg,
-                                position: 'top-right',
-                                loaderBg: '#ffff',
-                                icon: 'error',
-                                hideAfter: 3500
-                            });
-                        }
-                    },
-                    Error: function (result) {
-                        $.toast({
-                            heading: result.data.title,
-                            text: result.data.msg,
-                            position: 'top-right',
-                            loaderBg: '#ffff',
-                            icon: 'error',
-                            hideAfter: 3500
-                        });
+        //Get Story Detail
+        var getStoryDetails = function (id) {
+            $.ajax({
+                url: `${configuration.BASE_API_URL}Story/getDetail/${id}`,
+                method: "GET",
+                success: function (result) {
+                    actionAdd = false;
+                    $('#name').text(result.data.name);
+                    $('#description').append(result.data.description);
+                    $('#category').text(result.data.categoryName);
+                    $('#poster').text(result.data.categoryName.posterName);
+                    $('#author').text(result.data.authorName);
+                    $('#totalVisit').text(result.data.totalVisit)
+                    if (result.data.imageUrl != null) {
+                        $("#review_container").children().remove().end();
+                        var oldHandle = result.data.imageUrl.replace("https://cdn.filestackcontent.com/", "");
+                        $("#review_container").append("<img src='https://cdn.filestackcontent.com/resize=height:300/" + oldHandle + "' alt='Preview-loading'/>");
                     }
-                });
+                    var data = result.data.status;
+                    if (data == 0) {
+                        $('#status').append('<span class="badge badge-success">Chờ duyệt</span>');
+                    } else if (data == 1) {
+                        $('#status').append('<span class="badge badge-info">Đã duyệt</span>');
+                    }
+                    else if (data == 2) {
+                        $('#status').append('<span class="badge badge-danger">Từ chối</span>');
+                    } else {
+                        $('#status').append('<span class="badge badge-warning">Chưa xác định</span>');
+                    }
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
             });
-        }
-
-        //Add New Event Module
-        function ShowAddNewEventForm() {
-            $("#AddStoryCatesModal").modal().show();
-        }
+        };
 
         //Change Status Event
         function OpenChangeStatusPopup(eventId) {
@@ -183,7 +235,7 @@
         function ChangeStatus(statusNum) {
             var eventId = $("#eventIdStatus").val();
             $.ajax({
-                url: `${configuration.BASE_API_URL}Story/updateStatus?eventId=${eventId}&statusNum=${statusNum}`,
+                url: `${configuration.BASE_API_URL}Chapter/updateStatus?eventId=${eventId}&statusNum=${statusNum}`,
                 headers: {
                     "Authorization": `${configuration.ACCESSTOKEN}`,
                 },
@@ -224,6 +276,40 @@
                     });
                 }
             });
+        }
+        //Click View button in datatable row
+       function getEventDetails(id) {
+            $.ajax({
+                url: `${configuration.BASE_API_URL}Chapter/getDetail/${id}`,
+                method: "GET",
+                success: function (result) {
+                    $('#position').text(result.data.position);
+                    $('#chaptername').text(result.data.name);
+                    $('#detail').text(result.data.detail)
+                    $("#EditEventModal").modal('show');
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
+            });
+        };
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [day, month, year].join('/');
         }
     </script>
 }

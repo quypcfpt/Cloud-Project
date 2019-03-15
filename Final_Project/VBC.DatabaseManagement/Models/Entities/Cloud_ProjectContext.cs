@@ -148,14 +148,14 @@ namespace VBC.DatabaseManagement.Models.Entities
 
             modelBuilder.Entity<Author>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Name).HasMaxLength(10);
             });
 
             modelBuilder.Entity<Chapter>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
@@ -207,7 +207,7 @@ namespace VBC.DatabaseManagement.Models.Entities
 
             modelBuilder.Entity<Story>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.CategoryId).HasColumnName("categoryId");
 

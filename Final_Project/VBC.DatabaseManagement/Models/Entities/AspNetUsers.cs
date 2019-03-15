@@ -33,6 +33,7 @@ namespace VBC.DatabaseManagement.Models.Entities
         public int AccessFailedCount { get; set; }
         public string FullName { get; set; }
         public string AvartarUrl { get; set; }
+        public int? Status { get; set; }
 
         public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }

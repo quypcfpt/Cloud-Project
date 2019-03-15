@@ -12,7 +12,7 @@ namespace VBC.DatabaseManagement.ViewModels
         public string Name { get; set; }
         public string Description { get; set; }
         public int? Status { get; set; }
-        public bool? Approved { get; set; }
+        public int? Approved { get; set; }
         public int? TotalVisit { get; set; }
         public string SeoName { get; set; }
         public string ImageUrl { get; set; }
