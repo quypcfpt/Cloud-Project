@@ -31,3 +31,14 @@ G:\PRC391\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.Assembly
 G:\PRC391\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.dll
 G:\PRC391\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.pdb
 G:\PRC391\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.csprojAssemblyReference.cache
+D:\Cloud\Cloud-Project\Final_Project\VBC.Service\bin\Debug\netcoreapp2.2\VBC.Service.deps.json
+D:\Cloud\Cloud-Project\Final_Project\VBC.Service\bin\Debug\netcoreapp2.2\VBC.Service.runtimeconfig.json
+D:\Cloud\Cloud-Project\Final_Project\VBC.Service\bin\Debug\netcoreapp2.2\VBC.Service.runtimeconfig.dev.json
+D:\Cloud\Cloud-Project\Final_Project\VBC.Service\bin\Debug\netcoreapp2.2\VBC.Service.dll
+D:\Cloud\Cloud-Project\Final_Project\VBC.Service\bin\Debug\netcoreapp2.2\VBC.Service.pdb
+D:\Cloud\Cloud-Project\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.csprojAssemblyReference.cache
+D:\Cloud\Cloud-Project\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.csproj.CoreCompileInputs.cache
+D:\Cloud\Cloud-Project\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.AssemblyInfoInputs.cache
+D:\Cloud\Cloud-Project\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.AssemblyInfo.cs
+D:\Cloud\Cloud-Project\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.dll
+D:\Cloud\Cloud-Project\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.pdb
