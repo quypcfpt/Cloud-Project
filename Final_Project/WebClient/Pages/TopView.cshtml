@@ -1,14 +1,14 @@
 ﻿@page
-@model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "TopView";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
 <section class="site-section py-sm">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h2 class="mb-4">Truyện mới cập nhật</h2>
+                <h2 class="mb-4">Xem Nhiều nhất</h2>
             </div>
         </div>
         <div class="row blog-entries">
@@ -19,8 +19,7 @@
                 <div class="row mt-5">
                     <div class="col-md-12 text-center">
                         <nav aria-label="Page navigation" class="text-center">
-                            <ul id="pagination">
-                            </ul>
+                            <ul id="pagination"></ul>
                         </nav>
                     </div>
                 </div>
@@ -53,14 +52,14 @@
     </div>
 </script>
 
-    @section scripts{
-        <script>
+@section scripts{
+    <script>
             $(document).ready(function () {
                 LoadStory();
             });
             function LoadStory() {
                 $.ajax({
-                    url: `${configuration.BASE_API_URL}Story/getStoriesNewChapters`,
+                    url: `${configuration.BASE_API_URL}Story/getStoriesTopView`,
                     method: "GET",
                     success: function (result) {
                         Pagination(result.data);
@@ -107,5 +106,5 @@
                     //return false
                 });
             }
-        </script>
-    }
+    </script>
+}

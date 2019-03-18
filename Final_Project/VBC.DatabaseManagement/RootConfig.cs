@@ -83,8 +83,10 @@ namespace VBC.DatabaseManagement
                 automapper.CreateMap<Story, StoryViewModel>()
                 .ForMember(q => q.AuthorName, p => p.MapFrom(src => src.Author.Name))
                 .ForMember(q => q.CategoryName, p => p.MapFrom(src => src.Category.Name))
+                .ForMember(q => q.CategorySeoName, p => p.MapFrom(src => src.Category.SeoName))
                 .ForMember(q => q.PosterName, p => p.MapFrom(src => src.Poster.UserName))
-                .ForMember(q => q.TotalChapters, p => p.MapFrom(src => src.Chapter.Any()? src.Chapter.Count():0));
+                .ForMember(q => q.TotalChapters, p => p.MapFrom(src => src.Chapter.Any()? src.Chapter.Count():0))
+                .ForMember(q => q.LastDateTimePostChapter, p => p.MapFrom(src => src.Chapter.Any() ? src.Chapter.Max(b => b.CreateTime).Value.ToString() : null ));
                 automapper.CreateMap<StoryViewModel, Story>();
 
                 automapper.CreateMap<Chapter, ChapterViewModel>();

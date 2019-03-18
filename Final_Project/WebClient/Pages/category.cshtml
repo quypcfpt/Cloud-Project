@@ -18,15 +18,13 @@
                 <div class="row mb-5 mt-5">
 
                     <div class="col-md-12" id="list-category-post">
-                  </div>
+                    </div>
                 </div>
 
                 <div class="row mt-5">
                     <div class="col-md-12 text-center">
                         <nav aria-label="Page navigation" class="text-center">
-                            <ul class="pagination">
-                                <button onclick="myFunction()">Click me</button>
-                            </ul>
+                            <ul id="pagination"></ul>
                         </nav>
                     </div>
                 </div>
@@ -36,106 +34,6 @@
             </div>
             <div class="col-md-12 col-lg-2 main-content"></div>
             <!-- END main-content -->
-
-            <div class="col-md-12 col-lg-4 sidebar" style="display:none">
-                <div class="sidebar-box search-form-wrap">
-                    <form action="#" class="search-form">
-                        <div class="form-group">
-                            <span class="icon fa fa-search"></span>
-                            <input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
-                        </div>
-                    </form>
-                </div>
-                <!-- END sidebar-box -->
-                <div class="sidebar-box">
-                    <div class="bio text-center">
-                        <img src="images/person_2.jpg" alt="Image Placeholder" class="img-fluid">
-                        <div class="bio-body">
-                            <h2>Craig David</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
-                            <p><a href="#" class="btn btn-primary btn-sm rounded">Read my bio</a></p>
-                            <p class="social">
-                                <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
-                                <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
-                                <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
-                                <a href="#" class="p-2"><span class="fa fa-youtube-play"></span></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- END sidebar-box -->
-                <div class="sidebar-box">
-                    <h3 class="heading">Popular Posts</h3>
-                    <div class="post-entry-sidebar">
-                        <ul>
-                            <li>
-                                <a href="">
-                                    <img src="images/img_2.jpg" alt="Image placeholder" class="mr-4">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="images/img_4.jpg" alt="Image placeholder" class="mr-4">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="images/img_12.jpg" alt="Image placeholder" class="mr-4">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- END sidebar-box -->
-
-                <div class="sidebar-box">
-                    <h3 class="heading">Categories</h3>
-                    <ul class="categories">
-                        <li><a href="#">Food <span>(12)</span></a></li>
-                        <li><a href="#">Travel <span>(22)</span></a></li>
-                        <li><a href="#">Lifestyle <span>(37)</span></a></li>
-                        <li><a href="#">Business <span>(42)</span></a></li>
-                        <li><a href="#">Adventure <span>(14)</span></a></li>
-                    </ul>
-                </div>
-                <!-- END sidebar-box -->
-
-                <div class="sidebar-box">
-                    <h3 class="heading">Tags</h3>
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Adventure</a></li>
-                        <li><a href="#">Food</a></li>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Freelancing</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Adventure</a></li>
-                        <li><a href="#">Food</a></li>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Freelancing</a></li>
-                    </ul>
-                </div>
-            </div>
             <!-- END sidebar -->
 
         </div>
@@ -144,7 +42,7 @@
 
 <script id="hidden-template" type="text/x-custom-template">
     <div class="post-entry-horzontal">
-        <a href="blog-single.html">
+        <a href="${link}">
             <div class="image element-animate" data-animate-effect="fadeIn" style="background-image: url(/template/images/img_5.jpg);"></div>
             <span class="text">
                 <div class="post-meta">
@@ -154,8 +52,8 @@
                     <span class="ml-2"><i class="fa fa-book" aria-hidden="true"></i> ${totalchapter}</span>
                 </div>
                 <h2>${name}</h2>
-                <span class="badge badge-info status" >${status}</span>
-    
+                <span class="badge badge-info status">${status}</span>
+
             </span>
         </a>
     </div>
@@ -165,53 +63,68 @@
             $(document).ready(function () {
                 LoadStory();
         });
-        var listStoryByCategory;
+      
             function LoadStory() {
                 $.ajax({
                     url: `${configuration.BASE_API_URL}Story/getStoriesByCategory?cateSeoName=@Model.SeoName`,
                     method: "GET",
                     success: function (result) {
-                        listStoryByCategory = result.data;
-                        var listSize = result.data.length;
-                        var totalPage=0;
-                        if (listSize % 10 == 0) {
-                            totalPage = listSize / 10
-                        } else {
-                            totalPage = Math.floor((listSize / 10) + 1)
-                        }
-                        var currentPage = 0;
-                        var page_Records = 10;
-                        for (var i = currentPage * page_Records; i <= listSize; i++) {
-                            var value = result.data;
-                            var story = $('#hidden-template').text();
-                            story = story.replace("${image}", value[i].imageUrl);
-                            story = story.replace("${authorName}", value[i].authorName);
-                            story = story.replace("${lastUpdateDate}", value[i].categoryName);
-                            story = story.replace("${totalchapter}", value[i].totalChapters);
-                            story = story.replace("${totalVisit}", value[i].totalVisit);
-                            story = story.replace("${name}", value[i].name);
-                            story = story.replace("${posterName}", value[i].posterName);
-                            story = story.replace("${statusCode}", value[i].status);
-                            var text;
-                            var data = value[i].status;
-                            $('.status').append("");
-                            if (data == 0) {
-                                text = "Đang Ra"
-                            } else if (data == 1) {
-                                text = "Hoàn Thành"
-                            } else if (data == 2) {
-                                text = "Chưa Xác Định"
-                            }
-                            story = story.replace("${status}", text);
-                            $("#list-category-post").append(story);
-                        }
-
+                        Pagination(result.data);
+                       
                     },
                     error: function (result) {
                         alert("Có lỗi xảy ra!")
                     }
                 });
+            }
+        function Pagination(sources) {
+            var container = $('#pagination');
+            var options = {
+                dataSource: sources,
+                pageSize: 5,
+                callback: function (response, pagination) {
+                    window.console && console.log(response, pagination);
+
+                    var dataHtml = '';
+                    $.each(response, function (key, value) {
+                        var story = $('#hidden-template').text();
+                        story = story.replace("${image}", value.imageUrl);
+                        story = story.replace("${authorName}", value.authorName);
+                        story = story.replace("${lastUpdateDate}", value.categoryName);
+                        story = story.replace("${totalchapter}", value.totalChapters);
+                        story = story.replace("${totalVisit}", value.totalVisit);
+                        story = story.replace("${name}", value.name);
+                        story = story.replace("${posterName}", value.posterName);
+                        story = story.replace("${statusCode}", value.status);
+                        story = story.replace("${link}", "/chapterList?seoName=" + value.seoName + "&storyName=" + value.name);
+                        var text;
+                        var data = value.status;
+                        $('.status').append("");
+                        if (data == 0) {
+                            text = "Đang Ra"
+                        } else if (data == 1) {
+                            text = "Hoàn Thành"
+                        } else if (data == 2) {
+                            text = "droped"
+                        }
+                        story = story.replace("${status}", text);
+                        dataHtml += story;
+                    });
+                    dataHtml += '';
+
+                    $("#list-category-post").html(dataHtml);
+                }
+            };
+
+            container.addHook('beforeInit', function () {
+                window.console && console.log('beforeInit...');
+            });
+            container.pagination(options);
+
+            container.addHook('beforePageOnClick', function () {
+                window.console && console.log('beforePageOnClick...');
+                //return false
+            });
         }
-      
     </script>
-    }
+}

@@ -249,6 +249,30 @@ namespace VBC.WebApi.Controllers
             }
         }
 
+        [HttpGet("getDetailbySeoName/{seoName}")]
+        public async Task<ActionResult> GetDetailsbySeoName(string seoName)
+        {
+            try
+            {
+                var result = storyService.Get(q => q.SeoName.Equals(seoName) && q.Active== true && q.Approved == 1).FirstOrDefault();
+                result.TotalVisit = result.TotalVisit + 1;
+                await storyService.UpdateAsync(result);
+                return Ok(new { data = result });
+            }
+            catch
+            {
+                return BadRequest(new
+                {
+                    data = new
+                    {
+                        title = "Error",
+                        Msg = "Fail to get details!"
+                    },
+                    Success = false
+                });
+            }
+        }
+
         [HttpDelete("delete")]
         [Authorize]
         public async Task<ActionResult> DeleteByID([FromQuery] int id)
@@ -295,6 +319,52 @@ namespace VBC.WebApi.Controllers
                 var currentUser = await GetCurrentUserAsync();
 
                 var result = storyService.Get(q => q.Active == true && q.PosterId.Equals(currentUser.Id)).ToList();
+                return Ok(new { data = result });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new
+                {
+                    data = new
+                    {
+                        title = "Error",
+                        Msg = "Fail to load organization list!"
+                    },
+                    Success = false
+                });
+            }
+
+        }
+
+        [HttpGet("getStoriesNewChapters")]
+        public async Task<ActionResult> GetStoriesNewChapters()
+        {
+            try
+            {
+                var result = storyService.Get(q => q.Active == true && q.Approved == 1).OrderByDescending(a => a.LastDateTimePostChapter).ToList();
+                return Ok(new { data = result });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new
+                {
+                    data = new
+                    {
+                        title = "Error",
+                        Msg = "Fail to load organization list!"
+                    },
+                    Success = false
+                });
+            }
+
+        }
+
+        [HttpGet("getStoriesTopView")]
+        public async Task<ActionResult> GetStoriesTopView()
+        {
+            try
+            {
+                var result = storyService.Get(q => q.Active == true && q.Approved == 1).OrderByDescending(a => a.TotalVisit).ToList();
                 return Ok(new { data = result });
             }
             catch (Exception e)

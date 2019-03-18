@@ -42,6 +42,30 @@ namespace VBC.WebApi.Controllers
 
         }
 
+
+        [HttpGet("getChapterListbyStoryIdClient/{seoName}")]
+        public async Task<ActionResult> GetChapterListbyStoryIdClient(string seoName)
+        {
+            try
+            {
+                var result = chapterService.Get(q => q.Active == true && q.IsApproved == 1 && q.Story.SeoName.Equals(seoName)).ToList();
+                return Ok(new { data = result });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new
+                {
+                    data = new
+                    {
+                        title = "Error",
+                        Msg = "Fail to load chapter of Story list!"
+                    },
+                    Success = false
+                });
+            }
+
+        }
+
         [HttpPut("updateStatus")]
         [Authorize]
         public async Task<ActionResult> UpdateStatus([FromQuery] int eventId, [FromQuery] int statusNum)
@@ -100,6 +124,29 @@ namespace VBC.WebApi.Controllers
             }
         }
 
+        [HttpGet("getDetailClient/{position}")]
+        public async Task<ActionResult> GetDetailsClient(int position)
+        {
+            try
+            {
+                var result = chapterService.Get(q => q.Position == position && q.Active == true && q.IsApproved== 1).FirstOrDefault();
+                result.TotalVisit = result.TotalVisit + 1;
+              await chapterService.UpdateAsync(result);
+                return Ok(new { data = result });
+            }
+            catch
+            {
+                return BadRequest(new
+                {
+                    data = new
+                    {
+                        title = "Error",
+                        Msg = "Fail to get details!"
+                    },
+                    Success = false
+                });
+            }
+        }
 
         [HttpPost("create")]
         [Authorize]

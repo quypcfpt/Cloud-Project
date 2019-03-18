@@ -14,9 +14,31 @@
     <link rel="stylesheet" href="~/template/fonts/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="~/template/fonts/fontawesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/template/fonts/flaticon/font/flaticon.css">
-
+    <link href="~/lib/pagination/dist/pagination.css" rel="stylesheet" />
     <!-- Theme Style -->
     <link rel="stylesheet" href="~/template/css/style.css">
+    <style>
+        #wrapper {
+            width: 900px;
+            margin: 20px auto;
+        }
+
+        .data-container {
+            margin-top: 20px;
+        }
+
+            .data-container ul {
+                padding: 0;
+                margin: 0;
+            }
+
+            .data-container li {
+                margin-bottom: 5px;
+                padding: 5px 10px;
+                background: #eee;
+                color: #666;
+            }
+    </style>
     @RenderSection("Styles", required: false)
 </head>
 <body>
@@ -71,7 +93,7 @@
                                 <a class="nav-link" href="/topview">Xem nhiều nhất</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/login">Login</a>
+                                <a class="nav-link" href="http://localhost:39952">Đăng truyện</a>
                             </li>
                         </ul>
 
@@ -195,8 +217,7 @@
     <script src="~/template/js/owl.carousel.min.js"></script>
     <script src="~/template/js/jquery.waypoints.min.js"></script>
     <script src="~/template/js/jquery.stellar.min.js"></script>
-
-
+    <script src="~/lib/pagination/dist/pagination.js"></script>
     <script src="~/template/js/main.js"></script>
     <script src="~/js/configuration.js"></script>
     <script>

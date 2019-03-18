@@ -28,3 +28,7 @@ G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\Web
 G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient.pdb
 G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient.csproj.CopyComplete
 G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\Razor\Pages\category.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient.csprojAssemblyReference.cache
+G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\Razor\Pages\chapterList.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\Razor\Pages\SingleChapter.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\Razor\Pages\TopView.g.cshtml.cs

@@ -24,5 +24,8 @@ namespace VBC.DatabaseManagement.ViewModels
         public bool? Active { get; set; }
         public string PosterId { get; set; }
         public int? AuthorId { get; set; }
+        public string LastDateTimePostChapter { get; set; }
+
+        public string CategorySeoName { get; set; }
     }
 }

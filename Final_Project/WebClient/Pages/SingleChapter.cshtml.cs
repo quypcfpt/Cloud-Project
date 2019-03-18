@@ -9,13 +9,13 @@ namespace WebClient.Pages
 {
     public class SingleChapterModel : PageModel
     {
-        public void OnGet(int chapterId , int storyId)
+        public void OnGet(int chapterId  , string storySeoName)
         {
             
             this.chapterId = chapterId;
-            this.storyId = storyId;
+            this.StorySeoName = storySeoName;
         }
         public int chapterId { get; set; }
-        public int storyId { get; set; }
+        public string StorySeoName { get; set; }
     }
 }

@@ -9,14 +9,14 @@ namespace WebClient.Pages
 {
     public class chapterListModel : PageModel
     {
-        public void OnGet(int chapterId ,String storyName, String storyDes)
+        public void OnGet(string seoName ,String storyName, String storyDes)
         {
-            this.chapterId = chapterId;
-            this.storyName = storyName;
-            this.storyDes = storyDes;
+            this.SeoName = seoName;
+            this.StoryName = storyName;
+            this.StoryDes = storyDes;
         }
-        public String storyName { get; set; }
-        public String storyDes { get; set; }
-        public int chapterId { get; set; }
+        public String StoryName { get; set; }
+        public String StoryDes { get; set; }
+        public string SeoName { get; set; }
     }
 }
