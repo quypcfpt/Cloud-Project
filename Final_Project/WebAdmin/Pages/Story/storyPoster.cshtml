@@ -1,0 +1,827 @@
+﻿@page
+@{
+    ViewData["Title"] = "storyPoster";
+    Layout = "~/Pages/Shared/_LayoutPoster.cshtml";
+}
+
+@section Styles{
+    <!-- summernotes CSS -->
+    <link href="~/assets/plugins/summernote/dist/summernote.css" rel="stylesheet" />
+}
+
+@* -----Header----- *@
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor">Quản lý truyện</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Quản lý truyện</li>
+        </ol>
+    </div>
+</div>
+@* ----End Header---- *@
+@* ----Story Categories DataTable----- *@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive m-t-40">
+                    <table id="StoryCategoriesDatatable" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Tên</th>
+                                <th>Hình ảnh</th>
+                                <th>Thể loại</th>
+                                <th>Tác giả</th>
+                                <th>Trạng thái</th>
+                                <th>Tổng số chương</th>
+                                <th>Lượt xem</th>
+                                <th>Xét duyệt</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* ----End Story Categories Datatable---- *@
+@* ----Start Update Status Event ----- *@
+
+<div class="modal fade" id="UpdateStatusEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Thay đổi tình trạng truyện</h4>
+                <input type="hidden" id="eventIdStatus" />
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3 d-flex justify-content-center">
+                <button type="button" class="btn btn-success waves-effect waves-light m-r-10" onclick="ChangeStatus(0)">Đang ra</button>
+                <button type="button" class="btn btn-success waves-effect waves-light m-r-10" onclick="ChangeStatus(1)">Hoàn thành</button>
+                <button type="button" class="btn btn-danger waves-effect waves-light m-r-10" onclick="ChangeStatus(2)">Droped</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ----End Edit Event ------- *@
+
+@* ----Add New Event-------- *@
+<div class="modal fade" id="AddEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Thêm truyện mới</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <form class="form p-t-20" method="post" id="AddEventForm">
+                    <div class="form-group">
+                        <label for="name">Tên truyện</label>
+                        <div class="input-group">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Nhập tên truyện">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Giới thiệu</label>
+                        <div class="input-group">
+                            <div class="form-control summernote" id="description"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bannerUrl">Hình ảnh</label>
+                        <input type="button" class="btn btn-info" id="btnChange" value="Upload" />
+                        <div class="input-group">
+                            <input type="hidden" name="bannerUrl" id="bannerUrl" value="" />
+                            <input type="hidden" name="SecurityHash" id="txtSecurityHash" value="" />
+
+                            <div id="review_container"></div>
+                            @*<input type="text" class="form-control" name="bannerUrl" id="bannerUrl" placeholder="Enter Banner Url">*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="seoName">Seo Name</label>
+                        <div class="input-group">
+                            <input type="text" name="name" class="form-control" id="seoName" placeholder="Nhập Seo Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Thể loại</label>
+                        <div class="input-group">
+                            <select class="custom-select col-12" id="category">
+                                <option selected="" value="0">Chọn thể loại</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Tác giả</label>
+                        <div class="input-group">
+                            <select class="custom-select col-12" id="author">
+                                <option selected="" value="0">Chọn tác giả</option>
+                            </select>
+                            <input type="text" name="newAuthor" value="" class="form-control" id="newAuthor" placeholder="Nhập tên tác chưa có trong danh sách">
+                            <input type="button" class="btn btn-success" value="Thêm tác giả" id="AddNewAuthor"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Tình trạng</label>
+                        <div class="input-group">
+                            <select class="custom-select col-12" id="status">
+                                <option selected="" value="0">Đang ra</option>
+                                <option selected="" value="1">Hoàn thành</option>
+                                <option selected="" value="2">Droped</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" id="btnAddNewEvent" class="btn btn-success waves-effect waves-light m-r-10">Thêm</button>
+                <button type="button" class="btn btn-black waves-effect waves-light m-r-10" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">Hủy</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ----End Add new Event ----- *@
+@* ----Start Edit Event ----- *@
+
+<div class="modal fade" id="EditEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Chỉnh sửa truyện</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <form class="form p-t-20" method="post" id="EditEventForm">
+                    <div class="form-group">
+                        <label for="name">Tên truyện</label>
+                        <div class="input-group">
+                            <input type="text" name="name" class="form-control" id="editname" placeholder="Nhập tên truyện">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="seoName">Seo Name</label>
+                        <div class="input-group">
+                            <input type="text" name="name" class="form-control" id="editseoName" placeholder="Nhập Seo Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editdescription">Giới thiệu</label>
+                        <div class="input-group">
+                            <div class="form-control summernote" id="editdescription"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bannerUrl">Hình ảnh</label>
+                        <input type="button" class="btn btn-info" id="btnChangeImage" value="Upload" />
+                        <div class="input-group">
+                            <input type="hidden" name="bannerUrl" id="editbannerUrl" value="" />
+                            <input type="hidden" name="SecurityHash" id="txtSecurityHash" value="" />
+
+                            <div id="review_container_edit"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Thể loại</label>
+                        <div class="input-group">
+                            <select class="custom-select col-12" id="editcategory">
+                                <option selected="" value="0">Chọn thể loại</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Tác giả</label>
+                        <div class="input-group">
+                            <select class="custom-select col-12" id="editauthor">
+                                <option selected="" value="0">Chọn tác giả</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Tình trạng</label>
+                        <div class="input-group">
+                            <select class="custom-select col-12" id="editstatus">
+                                <option selected="" value="0">Đang ra</option>
+                                <option selected="" value="1">Hoàn thành</option>
+                                <option selected="" value="2">Droped</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" id="eventId">
+                </form>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" id="btnEditEvent" class="btn btn-success waves-effect waves-light m-r-10">Cập nhật</button>
+                <button type="button" class="btn btn-black waves-effect waves-light m-r-10" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">Quay lại</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ----End Edit Event ------- *@
+@section Scripts {
+    <script src="~/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/plugins/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="~/assets/plugins/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="~/assets/plugins/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="~/assets/plugins/summernote/dist/summernote.min.js"></script>
+    <script src="//static.filestackapi.com/filestack-js/1.x.x/filestack.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            InitDatatable();
+            LoadAuthors();
+            LoadCates();
+            $('.summernote').summernote({
+                height: 350, // set editor height
+                minHeight: null, // set minimum height of editor
+                maxHeight: null, // set maximum height of editor
+                focus: false // set focus to editable area after initializing summernote
+            });
+
+        });
+
+        var LoadCates = function () {
+            $.ajax({
+                url: `${configuration.BASE_API_URL}StoryCategory/getAll`,
+                method: "GET",
+                success: function (result) {
+                    $.each(result.data, function (key, value) {
+                        $('#category').append(' <option value="' + value.id + '">' + value.name + '</option>');
+                        $('#editcategory').append(' <option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
+            });
+        }
+
+        var LoadAuthors = function () {
+            $.ajax({
+                url: `${configuration.BASE_API_URL}Author/getAll`,
+                method: "GET",
+                success: function (result) {
+                    $.each(result.data, function (key, value) {
+                        $('#author').append(' <option value="' + value.id + '">' + value.name + '</option>');
+                        $('#editauthor').append(' <option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
+            });
+        }
+
+        var InitDatatable = function () {
+            $('#StoryCategoriesDatatable').dataTable({
+                "ajax": {
+                    "url": `${configuration.BASE_API_URL}Story/getAllActiveByPoster`,
+                    "method": "GET",
+                    headers: {
+                        "Authorization": `${configuration.ACCESSTOKEN}`,
+                    },
+                },
+                "buttons": [
+                    {
+                        text: '<i class="left-icon fa fa-plus"></i>&nbsp;Thêm truyện',
+                        className: 'dt-button-success',
+                        action: function (e, dt, node, config) {
+                            ShowAddNewEventForm();
+                        }
+                    },
+                ],
+                dom: 'Bftip',
+                "columns": [
+                    { data: 'name' },
+                    {
+                        data: 'imageUrl',
+                        render: function (data) {
+                            return '<img src="' + data + '" width="100" height="150"/>'
+                        }
+                    },
+                    { data: 'categoryName' },
+                    { data: 'authorName' },
+                    {
+                        data: 'status',
+                        render: function (data, type, row) {
+                            if (data == 0) {
+                                return '<button class="btn btn-success" onclick="OpenChangeStatusPopup(' + row['id'] + ')">Đang ra</button>'
+                            } else if (data == 1) {
+                                return '<button class="btn btn-info"  onclick="OpenChangeStatusPopup(' + row['id'] + ')">Hoàn thành</button>'
+                            }
+                            else if (data == 2) {
+                                return '<button class="btn btn-danger"  onclick="OpenChangeStatusPopup(' + row['id'] + ')">Droped</button>'
+                            } else {
+                                return '<span class="label label-warning">Không xác dịnh</span>'
+                            }
+                        }
+                    },
+                    { data: 'totalChapters' },
+                    { data: 'totalVisit' },
+                    {
+                        data: 'approved',
+                        render: function (data) {
+                            if (data == 0) {
+                                return '<span class="badge badge-success">Chờ duyệt</span>'
+                            } else if (data == 1) {
+                                return '<span class="badge badge-info">Đã duyệt</span>'
+                            }
+                            else if (data == 2) {
+                                return '<span class="badge badge-danger">Từ chối</span>'
+                            } else {
+                                return '<span class="badge badge-warning">Chưa xác định</span>'
+                            }
+                        }
+                    },
+                    {
+                        width: '40%',
+                        data: 'id', render: function (data) {
+                            return '<a class="btn btn-info text-white" title="view detail" href="chapterPoster?storyId=' + data + '"><i class="fa fa-eye"></i></a>'
+                                + '<button type="button" class="btn btn-success m-l-10" title="Update" onclick="getEventDetails(' + data + ')"><i class="fa fa-pencil"></i></button>'
+                                + '<button type="button" class="btn btn-danger" title="remove" onclick="DeleteEvent(' + data + ')"><i class="fa fa-trash"></i></button>';
+                        }
+                    }
+                ],
+                autoWidth: false,
+            });
+        };
+
+        function DeleteEvent(id) {
+            swal({
+                title: "Xác thực",
+                text: "Bạn có muốn xóa thể loại truyện này không?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Xóa",
+                cancelButtonText: "Thoát",
+            }, function () {
+                $.ajax({
+                    type: 'DELETE',
+                    url: `${configuration.BASE_API_URL}Story/delete?id=${id}`,
+                    headers: {
+                        "Authorization": `${configuration.ACCESSTOKEN}`,
+                    },
+                    success: function (result) {
+                        if (result.success) {
+                            $.toast({
+                                heading: result.data.title,
+                                text: result.data.msg,
+                                position: 'top-right',
+                                loaderBg: '#ffff',
+                                icon: 'success',
+                                hideAfter: 3500,
+                                stack: 6
+                            });
+                            $('#StoryCategoriesDatatable').DataTable().ajax.reload();
+                        } else {
+                            $.toast({
+                                heading: result.data.title,
+                                text: result.data.msg,
+                                position: 'top-right',
+                                loaderBg: '#ffff',
+                                icon: 'error',
+                                hideAfter: 3500
+                            });
+                        }
+                    },
+                    Error: function (result) {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'error',
+                            hideAfter: 3500
+                        });
+                    }
+                });
+            });
+        }
+
+        //Add New Event Module
+        function ShowAddNewEventForm() {
+            actionAdd = true;
+          
+            $("#AddEventModal").modal().show();
+          
+        }
+
+        var addNewEvent = function () {
+            var authorId = $("#author option:selected").val();
+            var cateId = $("#category option:selected").val();
+           
+
+            if (authorId == 0) {
+                $.toast({
+                    heading: "Thiếu thông tin",
+                    text: "Vui long chọn tác giả!",
+                    position: 'top-right',
+                    loaderBg: '#ffff',
+                    icon: 'error',
+                    hideAfter: 3500
+                });
+                return;
+            }
+
+            if (cateId == 0) {
+                $.toast({
+                    heading: "Thiếu thông tin",
+                    text: "Vui long chọn thể loại!",
+                    position: 'top-right',
+                    loaderBg: '#ffff',
+                    icon: 'error',
+                    hideAfter: 3500
+                });
+                return;
+            }
+
+            $(".summernote").summernote('destroy');
+            var formData = new FormData();
+            formData.append("name", $("#name").val());
+            formData.append("description", $("#description").html());
+            formData.append("imageUrl", $("#bannerUrl").val());
+            formData.append("categoryId", cateId);
+            formData.append("authorId", authorId);
+            formData.append("status", $("#status option:selected").val());
+            formData.append("seoName", $("#seoName").val());
+            $.ajax({
+                url: `${configuration.BASE_API_URL}Story/create`,
+                headers: {
+                    "Authorization": `${configuration.ACCESSTOKEN}`,
+                },
+                method: "post",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    if (result.success) {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'success',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                        $('#StoryCategoriesDatatable').DataTable().ajax.reload();
+                        $('#AddEventModal').modal('hide');
+                        $("#name").val("");
+                        $(".summernote").summernote('destroy');
+                        $("#description").children().remove().end;
+                        $("#status").val(0);
+                        $("#author").val(0);
+                        $("#category").val(0);
+                        $("#seoName").val("");
+                        $("#bannerUrl").val("")
+                        $("#review_container").children().remove().end();
+                        $(".summernote").summernote();
+                    }
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
+            });
+        };
+
+        $("#btnAddNewEvent").on("click", function () {
+            addNewEvent();
+        });
+
+        //Add New Author
+        var addNewAuthor = function () {
+            var authorName = $("#newAuthor").val();
+            if (authorName == "" || authorName == undefined) {
+                return;
+            }
+            var formData = new FormData();
+            formData.append("name", authorName);
+            $.ajax({
+                url: `${configuration.BASE_API_URL}Author/create`,
+                headers: {
+                    "Authorization": `${configuration.ACCESSTOKEN}`,
+                },
+                method: "post",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    if (result.success) {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'success',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                        $('#author').children("").remove().end();
+                        $('#editauthor').children("").remove().end();
+                        $('#author').append('<option selected="" value="0">Chọn tác giả</option>');
+                        $('#editauthor').append(' <option selected="" value="0">Chọn tác giả</option>');
+                        LoadAuthors();
+                    }
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
+            });
+        };
+
+        $("#AddNewAuthor").on("click", function () {
+            addNewAuthor();
+        });
+
+        //Edit Event Module
+        //Click Edit button in datatable row
+        var getEventDetails = function (id) {
+            $.ajax({
+                url: `${configuration.BASE_API_URL}Story/getDetail/${id}`,
+                method: "GET",
+                success: function (result) {
+                    actionAdd = false;
+                    $('#editname').val(result.data.name);
+                    $("#editdescription").summernote('destroy');
+                    $('#editdescription').append(result.data.description);
+                    $('#editseoName').val(result.data.seoName);
+                    $('#eventId').val(result.data.id);
+                    $('#editcategory').val(result.data.categoryId);
+                    $('#editauthor').val(result.data.authorId);
+                    $('#editstatus').val(result.data.status);
+                    if (result.data.imageUrl != null) {
+                        $('#editbannerUrl').val(result.data.imageUrl);
+                        $("#btnChangeImage").val("Change");
+                        $("#review_container_edit").children().remove().end();
+                        var oldHandle = result.data.imageUrl.replace("https://cdn.filestackcontent.com/", "");
+                        $("#review_container_edit").append("<img src='https://cdn.filestackcontent.com/resize=height:300/" + oldHandle + "' alt='Preview-loading'/>");
+                    }
+                    $("#editdescription").summernote();
+                    $("#EditEventModal").modal('show');
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
+            });
+        };
+        //Click Edit Submit Edit Form
+        var editEventDetails = function () {
+            var authorId = $("#editauthor option:selected").val();
+            var cateId = $("#editcategory option:selected").val();
+            if (authorId == 0) {
+                $.toast({
+                    heading: "Thiếu thông tin",
+                    text: "Vui long chọn tác giả!",
+                    position: 'top-right',
+                    loaderBg: '#ffff',
+                    icon: 'error',
+                    hideAfter: 3500
+                });
+                return;
+            }
+
+            if (cateId == 0) {
+                $.toast({
+                    heading: "Thiếu thông tin",
+                    text: "Vui long chọn thể loại!",
+                    position: 'top-right',
+                    loaderBg: '#ffff',
+                    icon: 'error',
+                    hideAfter: 3500
+                });
+                return;
+            }
+
+            $("#editdescription").summernote('destroy');
+            var formData = new FormData();
+            formData.append("name", $("#editname").val());
+            formData.append("description", $("#editdescription").html());
+            formData.append("imageUrl", $("#editbannerUrl").val());
+            formData.append("categoryId", cateId);
+            formData.append("authorId", authorId);
+            formData.append("status", $("#editstatus option:selected").val());
+            formData.append("seoName", $("#editseoName").val());
+            formData.append("id", $("#eventId").val());
+            $.ajax({
+                url: `${configuration.BASE_API_URL}Story/edit`,
+                headers: {
+                    "Authorization": `${configuration.ACCESSTOKEN}`,
+                },
+                method: "PUT",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    if (result.success) {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'success',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                    } else {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'error',
+                            hideAfter: 3500
+                        });
+                    }
+                    $('#StoryCategoriesDatatable').DataTable().ajax.reload();
+                    $("#EditEventModal").modal('hide');
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
+            });
+        }
+        //click button to edit organization details
+        $("#btnEditEvent").click(function () {
+            editEventDetails();
+        });
+        //Change Status Event
+        function OpenChangeStatusPopup(eventId) {
+            $("#UpdateStatusEventModal").modal("show");
+            $("#eventIdStatus").val(eventId);
+        }
+        function ChangeStatus(statusNum) {
+            var eventId = $("#eventIdStatus").val();
+            $.ajax({
+                url: `${configuration.BASE_API_URL}Story/updateStatus?eventId=${eventId}&statusNum=${statusNum}`,
+                headers: {
+                    "Authorization": `${configuration.ACCESSTOKEN}`,
+                },
+                method: "PUT",
+                contentType: false,
+                success: function (result) {
+                    if (result.success) {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'success',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+                    } else {
+                        $.toast({
+                            heading: result.data.title,
+                            text: result.data.msg,
+                            position: 'top-right',
+                            loaderBg: '#ffff',
+                            icon: 'error',
+                            hideAfter: 3500
+                        });
+                    }
+                    $('#StoryCategoriesDatatable').DataTable().ajax.reload();
+                    $("#UpdateStatusEventModal").modal('hide');
+                },
+                error: function (result) {
+                    $.toast({
+                        heading: result.data.title,
+                        text: result.data.msg,
+                        position: 'top-right',
+                        loaderBg: '#ffff',
+                        icon: 'error',
+                        hideAfter: 3500
+                    });
+                }
+            });
+        }
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const apikey = 'ALBSfS3M1T7C2AGUh7VLgz';
+            const client = filestack.init(apikey);
+            const options = {
+                //displayMode: 'inline',
+                //container: '#picker_container',
+                maxFiles: 1,
+                accept: [
+                    "image/jpeg",
+                    "image/jpg",
+                    "image/png",
+                    "image/bmp",
+                    "image/gif",
+                ],
+                fromSources: ['local_file_system', 'url', 'imagesearch'],
+                uploadInBackground: false,
+                onOpen: () => console.log('opened picker!'),
+                onUploadDone: (res) => uploadDoneCallBack(res),
+            };
+            var picker = client.picker(options);
+            var fileHandle = "";
+            //picker.open();
+            function uploadDoneCallBack(res) {
+                if (actionAdd) {
+                    var oldUrl = $("#bannerUrl").val();
+                } else {
+                    var oldUrl = $("#editbannerUrl").val();
+                }
+
+                var oldHandle = oldUrl.replace("https://cdn.filestackcontent.com/", "");
+                var url = res.filesUploaded[0].url;
+                var mimetype = res.filesUploaded[0].mimetype;
+                var handle = res.filesUploaded[0].handle;
+                if (actionAdd) {
+                    $("#bannerUrl").val(url);
+                    $("#btnChange").val("Change");
+                    $("#review_container").children().remove().end();
+                    /*Change control base on mime type*/
+                    $("#review_container").append("<img src='https://cdn.filestackcontent.com/resize=height:300,width:200/" + handle + "' alt='Preview-loading'/>");
+                } else {
+                    $("#editbannerUrl").val(url);
+                    $("#btnChangeImage").val("Change");
+                    $("#review_container_edit").children().remove().end();
+                    /*Change control base on mime type*/
+                    $("#review_container_edit").append("<img src='https://cdn.filestackcontent.com/resize=height:300,width:200/" + handle + "' alt='Preview-loading'/>");
+                }
+
+                if (oldHandle != "") {
+                    /*Delete previous uploaded file*/
+                    //var policy = "eyJjYWxsIjpbInJlbW92ZSJdLCJleHBpcnkiOjE1MzU2NTAyMDB9";
+                    //var signature = "3fee6bb7be4e7088b3e7d1b665f589cb5332eecedd19803f9b0fe4ba353de952";
+                    var policy = "eyJleHBpcnkiOjE1NTY3MjgyMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==";
+                    var signature = "aaa963b3bb26464d169985d838baf3067818b2917dc31beedba7f0a64f117086";
+                    var delUrl = "https://www.filestackapi.com/api/file/" + oldHandle + "?key=" + apikey + "&policy=" + policy + "&signature=" + signature;
+                    $.ajax({
+                        type: "DELETE",
+                        url: delUrl,
+                        success: function (res) {
+                            console.log(res);
+                        }
+                    });
+                }
+            }
+            btnChange.addEventListener('click', () => picker.open());
+            btnChangeImage.addEventListener('click', () => picker.open());
+        });
+    </script>
+}

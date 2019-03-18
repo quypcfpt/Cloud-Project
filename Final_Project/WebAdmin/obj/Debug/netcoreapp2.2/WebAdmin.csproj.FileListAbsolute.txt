@@ -32,6 +32,49 @@ G:\PRC391\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_Log
 G:\PRC391\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Login.g.cshtml.cs
 G:\PRC391\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\StoryCategory\Index.g.cshtml.cs
 G:\PRC391\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\Index.g.cshtml.cs
+G:\PRC391\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\Chapter.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.deps.json
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.runtimeconfig.json
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.runtimeconfig.dev.json
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.dll
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.pdb
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.Views.dll
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.Views.pdb
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.csproj.CoreCompileInputs.cache
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorAssemblyInfo.cache
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorAssemblyInfo.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.AssemblyInfoInputs.cache
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.AssemblyInfo.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.TagHelpers.input.cache
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.TagHelpers.output.cache
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorCoreGenerate.cache
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Error.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Index.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Login.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Privacy.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_CookieConsentPartial.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_Layout.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_LoginPartial.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_ValidationScriptsPartial.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\StoryCategory\Index.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\Chapter.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\Index.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewImports.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewStart.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorTargetAssemblyInfo.cache
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorTargetAssemblyInfo.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.Views.pdb
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.dll
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.pdb
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.csproj.CopyComplete
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_LayoutPoster.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\IndexPoster.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\ChangePassword.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Profile.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\RetrivePassword.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\storyPoster.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.csprojAssemblyReference.cache
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\ChapterPoster.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.deps.json
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.runtimeconfig.json
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.runtimeconfig.dev.json
@@ -48,16 +91,24 @@ D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.A
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.TagHelpers.input.cache
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.TagHelpers.output.cache
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorCoreGenerate.cache
+D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\ChangePassword.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Error.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Index.g.cshtml.cs
+D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\IndexPoster.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Login.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Privacy.g.cshtml.cs
+D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Profile.g.cshtml.cs
+D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\RetrivePassword.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_CookieConsentPartial.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_Layout.g.cshtml.cs
+D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_LayoutPoster.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_LoginPartial.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_ValidationScriptsPartial.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\StoryCategory\Index.g.cshtml.cs
+D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\Chapter.g.cshtml.cs
+D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\ChapterPoster.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\Index.g.cshtml.cs
+D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\storyPoster.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewImports.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewStart.g.cshtml.cs
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorTargetAssemblyInfo.cache
@@ -66,3 +117,45 @@ D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.V
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.dll
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.pdb
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.csproj.CopyComplete
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.deps.json
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.runtimeconfig.json
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.runtimeconfig.dev.json
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.dll
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.pdb
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.Views.dll
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\bin\Debug\netcoreapp2.2\WebAdmin.Views.pdb
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.csprojAssemblyReference.cache
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.csproj.CoreCompileInputs.cache
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorAssemblyInfo.cache
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorAssemblyInfo.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.AssemblyInfoInputs.cache
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.AssemblyInfo.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.TagHelpers.input.cache
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.TagHelpers.output.cache
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorCoreGenerate.cache
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\ChangePassword.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Error.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Index.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\IndexPoster.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Login.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Privacy.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Profile.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\RetrivePassword.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_CookieConsentPartial.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_Layout.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_LayoutPoster.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_LoginPartial.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Shared\_ValidationScriptsPartial.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\StoryCategory\Index.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\Chapter.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\ChapterPoster.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\Index.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\Story\storyPoster.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewImports.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewStart.g.cshtml.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorTargetAssemblyInfo.cache
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.RazorTargetAssemblyInfo.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.Views.pdb
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.dll
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.pdb
+D:\Cloud\Cloud-Project - Copy\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.csproj.CopyComplete

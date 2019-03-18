@@ -9614,11 +9614,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Cloud\\Cloud-Project\\Final_Project\\VBC.DatabaseManagement\\VBC.DatabaseManagement.csproj",
+      "projectUniqueName": "D:\\Cloud\\Cloud-Project - Copy\\Final_Project\\VBC.DatabaseManagement\\VBC.DatabaseManagement.csproj",
       "projectName": "VBC.DatabaseManagement",
-      "projectPath": "D:\\Cloud\\Cloud-Project\\Final_Project\\VBC.DatabaseManagement\\VBC.DatabaseManagement.csproj",
+      "projectPath": "D:\\Cloud\\Cloud-Project - Copy\\Final_Project\\VBC.DatabaseManagement\\VBC.DatabaseManagement.csproj",
       "packagesPath": "C:\\Users\\Quy\\.nuget\\packages\\",
-      "outputPath": "D:\\Cloud\\Cloud-Project\\Final_Project\\VBC.DatabaseManagement\\obj\\",
+      "outputPath": "D:\\Cloud\\Cloud-Project - Copy\\Final_Project\\VBC.DatabaseManagement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9637,8 +9637,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\Cloud\\Cloud-Project\\Final_Project\\VBC.Service\\VBC.Service.csproj": {
-              "projectPath": "D:\\Cloud\\Cloud-Project\\Final_Project\\VBC.Service\\VBC.Service.csproj"
+            "D:\\Cloud\\Cloud-Project - Copy\\Final_Project\\VBC.Service\\VBC.Service.csproj": {
+              "projectPath": "D:\\Cloud\\Cloud-Project - Copy\\Final_Project\\VBC.Service\\VBC.Service.csproj"
             }
           }
         }

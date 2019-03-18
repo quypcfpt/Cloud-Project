@@ -17,6 +17,9 @@ namespace VBC.DatabaseManagement.Identity
         public string FullName { get; set; }
         public string AvartarUrl { get; set; }
 
+        public int? Status { get; set; }
+
+
         /// <summary>
         /// Cai ham nay co the tao ra cho controller 1 cai accesstoken de ho tra ve cho nguoi dung
         /// </summary>
@@ -61,7 +64,9 @@ namespace VBC.DatabaseManagement.Identity
             {
                 token = tokenString,
                 validTo = token.ValidTo,
-                valifFrom = token.ValidFrom
+                valifFrom = token.ValidFrom,
+                fullname = user.FullName,
+                avatar = user.AvartarUrl,
             };
         }
     }

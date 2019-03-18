@@ -5,23 +5,33 @@ using System.Text;
 
 namespace VBC.DatabaseManagement.Utils
 {
-    public enum EventStatusEnum
+    public enum StoryStatusEnum
     {
-        [Display(Name = "Chưa diễn ra")]
+        [Display(Name = "Chờ duyệt")]
         Waiting = 0,
-        [Display(Name = "Đang diễn ra")]
-        Processing = 1,
-        [Display(Name = "Đã dừng")]
-        Stop = 2,
-        [Display(Name = "Tạm dừng")]
-        Pause = 3
+        [Display(Name = "Duyệt và hiển thị")]
+        Approved = 1,
+        [Display(Name = "Từ chối")]
+        Disapproved = 2,
     }
 
-    public enum OrganizationStatusEnum
+    public enum ChapterStatusEnum
     {
-        [Display(Name = "Disapproved")]
-        Disapproved = 0,
-        [Display(Name = "Approved")]
-        Approved = 1,             
+        [Display(Name = "Chờ duyệt")]
+        Waiting = 0,
+        [Display(Name = "Duyệt")]
+        Approved = 1,
+        [Display(Name = "Từ chối")]
+        Disapproved = 2,
+    }
+
+    public enum AccountStatusEnum
+    {
+        [Display(Name = "Chờ xác nhận")]
+        Waiting = 0,
+        [Display(Name = "Đang hoạt động")]
+        Active = 1,
+        [Display(Name = "Ngừng hoạt động")]
+        Deactive = 2,
     }
 }

@@ -12953,11 +12953,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Cloud\\Cloud-Project\\Final_Project\\WebAdmin\\WebAdmin.csproj",
+      "projectUniqueName": "D:\\Cloud\\Cloud-Project - Copy\\Final_Project\\WebAdmin\\WebAdmin.csproj",
       "projectName": "WebAdmin",
-      "projectPath": "D:\\Cloud\\Cloud-Project\\Final_Project\\WebAdmin\\WebAdmin.csproj",
+      "projectPath": "D:\\Cloud\\Cloud-Project - Copy\\Final_Project\\WebAdmin\\WebAdmin.csproj",
       "packagesPath": "C:\\Users\\Quy\\.nuget\\packages\\",
-      "outputPath": "D:\\Cloud\\Cloud-Project\\Final_Project\\WebAdmin\\obj\\",
+      "outputPath": "D:\\Cloud\\Cloud-Project - Copy\\Final_Project\\WebAdmin\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

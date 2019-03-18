@@ -3762,11 +3762,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Cloud\\Cloud-Project\\Final_Project\\VBC.Service\\VBC.Service.csproj",
+      "projectUniqueName": "D:\\Cloud\\Cloud-Project - Copy\\Final_Project\\VBC.Service\\VBC.Service.csproj",
       "projectName": "VBC.Service",
-      "projectPath": "D:\\Cloud\\Cloud-Project\\Final_Project\\VBC.Service\\VBC.Service.csproj",
+      "projectPath": "D:\\Cloud\\Cloud-Project - Copy\\Final_Project\\VBC.Service\\VBC.Service.csproj",
       "packagesPath": "C:\\Users\\Quy\\.nuget\\packages\\",
-      "outputPath": "D:\\Cloud\\Cloud-Project\\Final_Project\\VBC.Service\\obj\\",
+      "outputPath": "D:\\Cloud\\Cloud-Project - Copy\\Final_Project\\VBC.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

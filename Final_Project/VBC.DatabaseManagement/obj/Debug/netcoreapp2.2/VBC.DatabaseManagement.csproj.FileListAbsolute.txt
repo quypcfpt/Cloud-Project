@@ -40,6 +40,20 @@ G:\PRC391\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.Datab
 G:\PRC391\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.Service.dll
 G:\PRC391\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.Service.pdb
 G:\PRC391\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.csproj.CopyComplete
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.deps.json
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.runtimeconfig.json
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.runtimeconfig.dev.json
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.dll
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.pdb
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.Service.dll
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.Service.pdb
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.csprojAssemblyReference.cache
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.csproj.CoreCompileInputs.cache
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.AssemblyInfoInputs.cache
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.AssemblyInfo.cs
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.csproj.CopyComplete
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.dll
+G:\PRC391\Project_Assignment\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.pdb
 D:\Cloud\Cloud-Project\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.deps.json
 D:\Cloud\Cloud-Project\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.runtimeconfig.json
 D:\Cloud\Cloud-Project\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.runtimeconfig.dev.json
@@ -54,3 +68,17 @@ D:\Cloud\Cloud-Project\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp
 D:\Cloud\Cloud-Project\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.csproj.CopyComplete
 D:\Cloud\Cloud-Project\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.dll
 D:\Cloud\Cloud-Project\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.pdb
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.deps.json
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.runtimeconfig.json
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.runtimeconfig.dev.json
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.dll
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.DatabaseManagement.pdb
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.Service.dll
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\bin\Debug\netcoreapp2.2\VBC.Service.pdb
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.csprojAssemblyReference.cache
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.csproj.CoreCompileInputs.cache
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.AssemblyInfoInputs.cache
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.AssemblyInfo.cs
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.csproj.CopyComplete
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.dll
+D:\Cloud\Cloud-Project - Copy\Final_Project\VBC.DatabaseManagement\obj\Debug\netcoreapp2.2\VBC.DatabaseManagement.pdb

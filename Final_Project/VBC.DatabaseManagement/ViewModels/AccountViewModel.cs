@@ -12,6 +12,7 @@ namespace VBC.DatabaseManagement.ViewModels
         public string PhoneNumber { get; set; }
         public string FullName { get; set; }
         public string AvartarUrl { get; set; }
+        public int? Status { get; set; }
 
     }
 
@@ -24,6 +25,7 @@ namespace VBC.DatabaseManagement.ViewModels
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         public string RoleId { get; set; }
+        public string AvartarUrl { get; set; }
     }
 
     public class ChangePasswordViewModel

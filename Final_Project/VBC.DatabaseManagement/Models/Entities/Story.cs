@@ -17,12 +17,13 @@ namespace VBC.DatabaseManagement.Models.Entities
         public string Description { get; set; }
         public int? Status { get; set; }
         public int? AuthorId { get; set; }
-        public bool? Approved { get; set; }
+        public int? Approved { get; set; }
         public int? CategoryId { get; set; }
         public bool? Active { get; set; }
         public string PosterId { get; set; }
         public int? TotalVisit { get; set; }
         public string SeoName { get; set; }
+        public string ImageUrl { get; set; }
 
         public virtual Author Author { get; set; }
         public virtual StoryCategory Category { get; set; }
