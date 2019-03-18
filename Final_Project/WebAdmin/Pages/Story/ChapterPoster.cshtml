@@ -289,12 +289,12 @@
                     }
                     var data = result.data.status;
                     if (data == 0) {
-                        $('#status').append('<span class="badge badge-success">Chờ duyệt</span>');
+                        $('#status').append('<span class="badge badge-success">Đang ra</span>');
                     } else if (data == 1) {
-                        $('#status').append('<span class="badge badge-info">Đã duyệt</span>');
+                        $('#status').append('<span class="badge badge-info">Hoàn thành</span>');
                     }
                     else if (data == 2) {
-                        $('#status').append('<span class="badge badge-danger">Từ chối</span>');
+                        $('#status').append('<span class="badge badge-danger">Droped</span>');
                     } else {
                         $('#status').append('<span class="badge badge-warning">Chưa xác định</span>');
                     }
