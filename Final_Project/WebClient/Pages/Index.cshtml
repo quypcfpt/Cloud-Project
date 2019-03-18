@@ -54,7 +54,7 @@
 
 <script id="hidden-template" type="text/x-custom-template">
     <div class="col-md-3">
-        <a href="blog-single.html" class="blog-entry">
+        <a href="${link}" class="blog-entry">
             <img src="${image}" width="200" height="300" alt="Image placeholder">
             <div class="blog-content-body">
                 <div class="post-meta">
@@ -89,8 +89,11 @@
                             story = story.replace("${lastUpdateDate}", value.categoryName);
                             story = story.replace("${totalchapter}", value.totalChapters);
                             story = story.replace("${name}", value.name);
+                            story = story.replace("${link}", "/chapterList?chapterId=" + value.id + "&storyName=" + value.name);
                             $("#storyList").append(story);
                         });
+
+                        var listSize = result.length
                     },
                     error: function (result) {
                         alert("Có lỗi xảy ra!")
