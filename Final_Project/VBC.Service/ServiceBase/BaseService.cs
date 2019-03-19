@@ -118,5 +118,13 @@ namespace VBC.Service
             var newViewModel = ToViewModel(entity);
             return newViewModel;
         }
+
+        protected TViewModel EntityToVM(TEntity data)
+        {
+            if (data == null) { return null; }
+            var vm = new TViewModel();
+            var entity = mapper.Map<TEntity, TViewModel>(data, vm);
+            return vm;
+        }
     }
 }

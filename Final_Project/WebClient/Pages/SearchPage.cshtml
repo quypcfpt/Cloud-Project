@@ -1,0 +1,21 @@
+﻿@page "/searchPage/{searchValue}"
+@model WebClient.Pages.SearchPageModel
+@{
+    ViewData["Title"] = "searchPage";
+}
+
+
+<script>
+    const callSearchResultAPI = async (searchValue) => {
+        var res = await fetch(`https://localhost:44361/api/recipe/read-recipename-page?recipeName=${encodeURIComponent(searchValue)}`);
+    var a = await res.json();
+        var data = a.result;
+        for (var item of data) {
+            console.log(item);
+            let element = getSearchResultAPI(item);
+            $("#list-latest-recipe-page").append(element);
+            var searchValue = $('#custom-input-search').val();
+
+        }
+    };
+</script>
