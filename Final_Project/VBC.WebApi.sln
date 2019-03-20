@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VBC.Service", "VBC.Service\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAdmin", "WebAdmin\WebAdmin.csproj", "{358F3E0E-B4C0-4260-9054-E33ED4745CFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient", "WebClient\WebClient.csproj", "{ACAF938B-6B48-4749-9AF8-9AABEFFA5291}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebClient", "WebClient\WebClient.csproj", "{ACAF938B-6B48-4749-9AF8-9AABEFFA5291}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

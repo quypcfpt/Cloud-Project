@@ -28,6 +28,19 @@ namespace VBC.WebApi.Controllers
             this.mapper = mapper;
         }
 
+        [HttpGet("searchStoryByLikeName")]
+        public async Task<ActionResult> GetStoryByLikeName([FromQuery]string storyName)
+        {
+            try
+            {
+                return Ok(this.storyService.GetStoryNameLike(storyName));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpGet("getAll")]
         public async Task<ActionResult> GetAll()
         {
@@ -392,4 +405,6 @@ namespace VBC.WebApi.Controllers
             return currentUser;
         }
     }
+ 
+   
 }

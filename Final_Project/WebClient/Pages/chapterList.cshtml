@@ -9,7 +9,7 @@
         <div class="row mb-4">
             <div class="col-md-3"></div>
             <div class="col-md-6 title-chapter">
-                <h2 class="mb-4">Category: @Model.StoryName</h2>
+                <h2 class="mb-4">Truyện: @Model.StoryName</h2>
             </div>
             <div class="col-md-3"></div>
         </div>
@@ -18,35 +18,52 @@
                 <img src="images/person_2.jpg" alt="Image Placeholder" class="img-fluid img-list-chapter">
             </div>
             <div class="col-md-8" id="description">
-                <h3>Intro</h3>
-                <div id="story_description">
-
-                </div>
+                <ul>
+                    <li>
+                        Tác Giả : <h4 id="authorName"></h4>
+                    </li>
+                    <li>
+                        Loại Truyện : <h5 id="CategoryName"></h5>
+                    </li>
+                    <li>
+                        Tổng số Chap : <h5 id="TotalChapter"></h5>
+                    </li>
+                    <li>
+                        Trạng Thái : <h5 id="status"></h5>
+                    </li>
+                    <li>Chap mới nhất được cập nhật : <h5 id="lastTimePost"></h5></li>
+                </ul>
 
             </div>
         </div>
-        <div class="row blog-entries">
-            <div class="col-md-12 col-lg-2 main-content"></div>
-            <div class="col-md-12 col-lg-8 main-content">
-                <div class="row mb-5 mt-5">
+        <div class="row mb-4">
+            <h3>Giới Thiệu</h3>
+            <div id="story_description">
 
-                    <div class="col-md-12" id="listChapter">
-
-                        <!-- END post -->
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col-md-12 text-center">
-                        <nav aria-label="Page navigation" class="text-center">
-                            <ul id="pagination"></ul>
-                        </nav>
-                    </div>
-                </div>
             </div>
-            <div class="col-md-12 col-lg-2 main-content"></div>
         </div>
-    </div>
-   
+            <div class="row blog-entries">
+                <div class="col-md-12 col-lg-2 main-content"></div>
+                <div class="col-md-12 col-lg-8 main-content">
+                    <div class="row mb-5 mt-5">
+
+                        <div class="col-md-12" id="listChapter">
+
+                            <!-- END post -->
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-md-12 text-center">
+                            <nav aria-label="Page navigation" class="text-center">
+                                <ul id="pagination"></ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-2 main-content"></div>
+            </div>
+        </div>
+
 </section>
 <script id="hidden-template" type="text/x-custom-template">
     <div class="post-entry-horzontal">
@@ -83,7 +100,20 @@
                 method: "GET",
                 success: function (result) {
                     $('#story_description').append(result.data.description)
-                   
+                    $('#authorName').append(result.data.authorName)
+                    $('#CategoryName').append(result.data.categoryName)
+                    $('#TotalChapter').append(result.data.totalChapters)
+                    $('#lastTimePost').append(result.data.lastDateTimePostChapter)
+                    var status = result.data.status;
+                    var statusView="";
+                    if (status == 0) {
+                        statusView = "Đang Ra";
+                    } else if (status == 1) {
+                        statusView = "Hoàn Thành";
+                    } else {
+                        statusView = "Chưa Xác Định";
+                    }
+                    $('#status').append(statusView)
                 },
                 error: function (result) {
                     alert("Có lỗi xảy ra!")
