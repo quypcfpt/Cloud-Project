@@ -90,7 +90,7 @@
                     method: "GET",
                     success: function (result) {
                         $('#linkstory').attr('href', '/chapterList?seoName=@Model.StorySeoName&storyName=' + result.data.name);
-                        $('#categoryName').attr('href', '/category?seoName=' + result.data.categorySeoName);
+                        $('#categoryName').attr('href', '/category?seoName=' + result.data.categorySeoName + '&categoryName=' + result.data.categoryName);
                         $('#authorName').append(result.data.authorName);
                         $('#StoryName').append(result.data.name);
                         $('#categoryName').append(result.data.categoryName);

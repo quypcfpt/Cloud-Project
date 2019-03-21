@@ -51,3 +51,4 @@ D:\Cloud\Cloud-Project\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Ser
 D:\Cloud\Cloud-Project\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.AssemblyInfo.cs
 D:\Cloud\Cloud-Project\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.dll
 D:\Cloud\Cloud-Project\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.pdb
+G:\PRC391\Project_Assignment\Final_Project\VBC.Service\obj\Debug\netcoreapp2.2\VBC.Service.csprojAssemblyReference.cache

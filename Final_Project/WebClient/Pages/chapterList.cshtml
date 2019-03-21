@@ -15,7 +15,7 @@
         </div>
         <div class="row mb-4">
             <div class="col-md-4">
-                <img src="images/person_2.jpg" alt="Image Placeholder" class="img-fluid img-list-chapter">
+                <img src="" id="storyImage" alt="Image Placeholder" class="img-fluid img-list-chapter">
             </div>
             <div class="col-md-8" id="description">
                 <ul>
@@ -99,6 +99,7 @@
                 url: `${configuration.BASE_API_URL}Story/getDetailbySeoName/@Model.SeoName`,
                 method: "GET",
                 success: function (result) {
+                    $('#storyImage').attr("src", result.data.imageUrl)
                     $('#story_description').append(result.data.description)
                     $('#authorName').append(result.data.authorName)
                     $('#CategoryName').append(result.data.categoryName)

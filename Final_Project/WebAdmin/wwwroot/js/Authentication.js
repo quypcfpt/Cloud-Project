@@ -115,4 +115,58 @@ function changePassword() {
     });
 
 }
+
+var regexpass = new RegExp("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$");
+function register() {
+    var password = $('#password').val();
+    var confirmPassword = $('#confirmpassword').val();
+    var username = $('#username').val();
+    var email = $('#email').val();
+    var name = $('#name').val();
+    var roleName = "User";
+    var regexpass = new RegExp('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$');
+
+    if (!regexpass.test(password)) {
+        $('#msgError').text("Mật khẩu phải ít nhất 8 kí tự gồm 1 chữ hoa, 1 số, 1 chữ thường và 1 kí tự đặc biệt");
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        $('#msgError').text("Mật khẩu xác nhận không đúng");
+        return;
+    }
+    if (username === "" || password === "" || confirmPassword === "" || email === "") {
+        $('#msgError').text("Chưa nhập đủ thông tin");
+
+    }
+    var formData = new FormData();
+    formData.append("userName", username);
+    formData.append("password", password);
+    formData.append("confirmPassword", confirmPassword);
+    formData.append("email", email);
+    formData.append("fullName", name);
+    formData.append("roleId", roleName);
+    $.ajax({
+        url: `${configuration.BASE_API_URL}Account/register`,
+        headers: {
+            "Authorization": `${configuration.ACCESSTOKEN}`,
+        },
+        method: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (result) {
+            if (result.success) {
+                $('#msgError').text(result.msg);
+                window.location = "/";
+            } else {
+                $('#msgError').text(result.msg);
+            }
+        },
+        error: function (result) {
+            $('#msgError').text(result.responseJSON.data.msg);
+        }
+    });
+
+}
 // execute directly

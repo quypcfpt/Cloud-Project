@@ -9,11 +9,13 @@ namespace WebClient.Pages
 {
     public class categoryModel : PageModel
     {
-        public void OnGet(string seoName)
+        public void OnGet(string seoName, string categoryName)
         {
             this.SeoName = seoName;
+            this.CategoryName = categoryName;
         }
 
         public string SeoName { get; set; }
+        public string CategoryName { get; set; }
     }
 }

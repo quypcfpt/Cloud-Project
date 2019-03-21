@@ -1,5 +1,5 @@
 ﻿const configuration = {
-    BASE_API_URL: "http://localhost:54764/api/",
+    BASE_API_URL: "http://localhost:5000/api/",
     ACCESSTOKEN: "Bearer " + getCookie("accessToken"),
     USERNAME: getCookie("username"),
     HOME: getCookie("homeurl"),

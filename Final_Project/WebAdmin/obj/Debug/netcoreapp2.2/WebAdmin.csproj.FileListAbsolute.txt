@@ -116,3 +116,5 @@ D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.V
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.dll
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.pdb
 D:\Cloud\Cloud-Project\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\WebAdmin.csproj.CopyComplete
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\RegisterPoster.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebAdmin\obj\Debug\netcoreapp2.2\Razor\Pages\AccountManagement.g.cshtml.cs

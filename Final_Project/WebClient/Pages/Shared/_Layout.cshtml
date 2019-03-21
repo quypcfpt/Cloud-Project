@@ -87,16 +87,14 @@
                                 <a class="nav-link dropdown-toggle" href="category.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Thể loại</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown05" id="categories">
                                 </div>
-
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/topview">Xem nhiều nhất</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="http://localhost:39952">Đăng truyện</a>
+                                <a class="nav-link" href="http://localhost:39951" target="_blank">Đăng truyện</a>
                             </li>
                         </ul>
-
                     </div>
                 </div>
             </nav>
@@ -213,7 +211,7 @@
                 method: "GET",
                 success: function (result) {
                     $.each(result.data, function (key, value) {
-                        $("#categories").append(' <a class="dropdown-item" href="/category?seoName=' + value.seoName + '">' + value.name + '</a>')
+                        $("#categories").append(' <a class="dropdown-item" href="/category?seoName=' + value.seoName + '&categoryName=' + value.name + '">' + value.name + '</a>')
                     });
                 },
                 error: function (result) {

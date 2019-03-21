@@ -67,3 +67,4 @@ D:\Cloud\Cloud-Project\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient
 D:\Cloud\Cloud-Project\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient.csproj.CopyComplete
 D:\Cloud\Cloud-Project\Final_Project\WebClient\obj\Debug\netcoreapp2.2\WebClient.csprojAssemblyReference.cache
 D:\Cloud\Cloud-Project\Final_Project\WebClient\obj\Debug\netcoreapp2.2\Razor\Pages\SearchPage.g.cshtml.cs
+G:\PRC391\Project_Assignment\Final_Project\WebClient\obj\Debug\netcoreapp2.2\Razor\Pages\SearchPage.g.cshtml.cs

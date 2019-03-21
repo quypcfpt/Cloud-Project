@@ -98,6 +98,9 @@ namespace VBC.DatabaseManagement
                 automapper.CreateMap<AspNetUsers, AccountViewModel>();
                 automapper.CreateMap<AccountViewModel, AspNetUsers>();
 
+                automapper.CreateMap<AccountViewModel, AccountEditViewModel>();
+                automapper.CreateMap<AccountEditViewModel, AccountViewModel>();
+
                 automapper.CreateMap<ApplicationUser, AccountEditViewModel>();
                 automapper.CreateMap<AccountEditViewModel, ApplicationUser>();
 

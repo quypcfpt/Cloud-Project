@@ -65,11 +65,11 @@ namespace VBC.WebApi.Controllers
                             string url = "/";
                             if (role.FirstOrDefault().Equals("System Manager"))
                             {
-                                url = "/";
+                                url = "/Story";
                             }
                             else if (role.FirstOrDefault().Equals("User"))
                             {
-                                url = "/IndexPoster";
+                                url = "/story/storyPoster";
                             }
                             else
                             {
@@ -135,7 +135,14 @@ namespace VBC.WebApi.Controllers
                 var existedUsername = await userManager.FindByNameAsync(data.UserName);
                 if (existedUsername != null)
                 {
-                    return Ok(new { message = "Username da ton tai" });
+                    return Ok(new
+                    {
+                        data = new
+                        {
+                            Msg = "Username da ton tai"
+                        },
+                        Success = false
+                    });
                 }
 
 
@@ -143,10 +150,17 @@ namespace VBC.WebApi.Controllers
                 mapper.Map(data, user);
                 user.SecurityStamp = Guid.NewGuid().ToString();
                 user.UserName = data.UserName;
-
+                user.Status = 1;
                 if (data.Password != data.ConfirmPassword)
                 {
-                    return BadRequest(new { message = "Xác thực password ko khớp" });
+                    return BadRequest(new
+                    {
+                        data = new
+                        {
+                            Msg = "Xác thực password ko khớp"
+                        },
+                        Success = false
+                    });
                 }
 
                 var result = await userManager.CreateAsync(user, data.Password);
@@ -154,14 +168,21 @@ namespace VBC.WebApi.Controllers
                 {
                     await userManager.AddToRoleAsync(user, data.RoleId);
                 }
-                return Ok(new { message = "register thanh cong" });
+                return Ok(new
+                {
+                    data = new
+                    {
+                        Msg = "register thanh cong"
+                    },
+                    Success = true
+                });
             }
             catch (Exception e)
             {
                 return BadRequest(new
                 {
                     title = "Có lỗi",
-                    message = e.Message.ToString()
+                    Msg = e.Message.ToString()
                 });
             }
 
@@ -173,32 +194,69 @@ namespace VBC.WebApi.Controllers
         {
             try
             {
-                ClaimsPrincipal claims = this.User;
-                var userId = claims.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-                var currentUser = await userManager.FindByIdAsync(userId);
-                currentUser.FullName = data.FullName;
-                currentUser.Email = data.Email;
-                currentUser.PhoneNumber = data.PhoneNumber;
-                var result = await userManager.UpdateAsync(currentUser);
-                if (result.Succeeded)
+                if (string.IsNullOrEmpty(data.Id))
                 {
-                    return Ok(new
+                    ClaimsPrincipal claims = this.User;
+                    var userId = claims.FindFirst(ClaimTypes.NameIdentifier).Value;
+                    var currentUser = await userManager.FindByIdAsync(userId);
+                    currentUser.FullName = data.FullName;
+                    currentUser.Email = data.Email;
+                    currentUser.PhoneNumber = data.PhoneNumber;
+                    currentUser.AvartarUrl = data.AvartarUrl;
+
+                    var currentUserRole = userManager.GetRolesAsync(currentUser).Result.FirstOrDefault();
+                    if (!currentUserRole.Equals(data.RoleId))
                     {
-                        data = new
+                        await userManager.RemoveFromRoleAsync(currentUser, currentUserRole);
+                        await userManager.AddToRoleAsync(currentUser, data.RoleId);
+                    }
+                    var result = await userManager.UpdateAsync(currentUser);
+                    if (result.Succeeded)
+                    {
+                        return Ok(new
                         {
-                            title = "Thanh cong!",
-                            Msg = "Cap nhat thanh cong nguoi dung: " + currentUser.UserName
-                        },
-                        Success = true
-                    });
+                            data = new
+                            {
+                                title = "Thanh cong!",
+                                Msg = "Cap nhat thanh cong nguoi dung: " + currentUser.UserName
+                            },
+                            Success = true
+                        });
+                    }
+                }
+                else
+                {
+                    var currentUser = await userManager.FindByIdAsync(data.Id);
+                    currentUser.FullName = data.FullName;
+                    currentUser.Email = data.Email;
+                    currentUser.PhoneNumber = data.PhoneNumber;
+                    currentUser.AvartarUrl = data.AvartarUrl;
+                    var currentUserRole = userManager.GetRolesAsync(currentUser).Result.FirstOrDefault();
+                    if (!currentUserRole.Equals(data.RoleId))
+                    {
+                        await userManager.RemoveFromRoleAsync(currentUser, currentUserRole);
+                        await userManager.AddToRoleAsync(currentUser, data.RoleId);
+                    }
+                    var result = await userManager.UpdateAsync(currentUser);
+                    if (result.Succeeded)
+                    {
+                        return Ok(new
+                        {
+                            data = new
+                            {
+                                title = "Thanh cong!",
+                                Msg = "Cap nhat thanh cong nguoi dung: " + currentUser.UserName
+                            },
+                            Success = true
+                        });
+                    }
                 }
                 return Ok(new
                 {
                     data = new
                     {
-                        title = "Khong thanh cong!",
-                        Msg = "Cap nhat khong thanh cong nguoi dung: " + currentUser.UserName
+                        title = "Có lỗi!",
+                        Msg = "Người dùng không tồn tại"
                     },
                     Success = false
                 });
@@ -207,10 +265,15 @@ namespace VBC.WebApi.Controllers
             {
                 return BadRequest(new
                 {
-                    title = "Có lỗi",
-                    message = e.Message.ToString()
+                    data = new
+                    {
+                        title = "Có lỗi!",
+                        Msg = "Cập nhật không thành công"
+                    },
+                    Success = false
                 });
             }
+
         }
 
         [HttpPut("change-password")]
@@ -225,7 +288,8 @@ namespace VBC.WebApi.Controllers
                 var currentUser = await userManager.FindByIdAsync(userId);
                 if (!data.NewPassword.Equals(data.ConfirmNewPassword))
                 {
-                    return Ok(new {
+                    return Ok(new
+                    {
                         data = new
                         {
                             Msg = "Tài khoản chưa xác nhận."
@@ -268,27 +332,27 @@ namespace VBC.WebApi.Controllers
             }
         }
 
-        [HttpGet("getProfile")]
+        [HttpPost("getProfile")]
         [Authorize]
-        public async Task<ActionResult> GetProfile()
+        public async Task<ActionResult> GetProfile([FromQuery]string id)
         {
-            try
+            if (string.IsNullOrEmpty(id))
             {
                 ClaimsPrincipal claims = this.User;
                 var userId = claims.FindFirst(ClaimTypes.NameIdentifier).Value;
-
                 var currentUser = await userManager.FindByIdAsync(userId);
-                var result = aspNetUserService.Get(q => q.Id.Equals(currentUser.Id)).FirstOrDefault();
+                var userProfile = aspNetUserService.Get(q => q.Id.Equals(currentUser.Id)).FirstOrDefault();
+                var result = new AccountEditViewModel();
+                mapper.Map(userProfile, result);
+                result.RoleId = userManager.GetRolesAsync(currentUser).Result.FirstOrDefault();
                 return Ok(new { data = result });
             }
-            catch (Exception e)
-            {
-                return BadRequest(new
-                {
-                    title = "Có lỗi",
-                    message = e.Message.ToString()
-                });
-            }
+            var user = await userManager.FindByIdAsync(id);
+            var profile = aspNetUserService.Get(q => q.Id.Equals(user.Id)).FirstOrDefault();
+            var userViewModel = new AccountEditViewModel();
+            mapper.Map(profile, userViewModel);
+            userViewModel.RoleId = userManager.GetRolesAsync(user).Result.FirstOrDefault();
+            return Ok(new { data = userViewModel });
         }
 
         [HttpPut("updateAvatar")]
@@ -492,5 +556,45 @@ namespace VBC.WebApi.Controllers
 
 
         }
+
+        [HttpGet("getAccountsByFilterSystemAdministrator")]
+        [Authorize]
+        public async Task<ActionResult> GetAccountsByFilterSystemAdministrator([FromQuery] string roleId, [FromQuery] int status)
+        {
+            try
+            {
+                var userAccounts = aspNetUserService.Get();
+                if (!string.IsNullOrEmpty(roleId))
+                {
+                    userAccounts = aspNetUserService.Get(q =>
+                    q.AspNetUserRoles.Where(p => p.RoleId.Equals(roleId)).Select(p => p.UserId)
+                    .Contains(q.Id));
+                }
+
+                if (status != -1)
+                {
+                    userAccounts = userAccounts.Where(q => q.Status == status);
+                }
+                var result = userAccounts;
+                return Ok(new
+                {
+                    data = result,
+                    Success = true
+                });
+            }
+            catch
+            {
+                return BadRequest(new
+                {
+                    data = new
+                    {
+                        title = "Error",
+                        Msg = "Failed to update!"
+                    },
+                    Success = false
+                });
+            }
+        }
+
     }
 }
